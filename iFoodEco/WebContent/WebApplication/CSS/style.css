@@ -1,0 +1,130 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+.titulo-principal{
+    position: relative;
+    width: 600px;
+    margin: 30px auto;
+    font-size: 30px;    
+    font-weight: bold;
+    margin-top: 60px;
+}
+
+.subtitulo{	
+	font-weight: bold;
+	color: #968f85;
+	font-size: 18px;
+}
+
+.faixa-dois{
+background: # ffffff;
+height: 80px;
+
+}
+.logo{
+	margin-left: 559px;
+}
+
+.logo_index{
+	margin-left: 559px;
+	margin-top: 15px
+}
+
+.seta{
+	margin-right: 1px;
+	cursor: pointer;
+}
+
+.faixa {
+    background: #dfdfdf;
+    padding: 3px 0;
+}
+.cabeçalho {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+}
+
+main {
+    width: 550px;
+    margin: 0 auto;
+}
+
+form label{
+display: block;
+font-size: 15px;
+margin: 30px 0 10px
+
+
+}
+
+.formulario{
+	margin: 40px auto;	
+
+}
+.enviar {
+    width:45%;
+    padding: 5px 0;
+    background: #ea1d2c;
+    color: white;    
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    transition: 1s all;
+    cursor: pointer;
+    margin: 50px 265px;
+}
+
+.background {
+	background-image: url("fundo.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+    
+}
+
+.faixa{
+	background: # ffffff;	
+}
+
+
+
+.cadastro {
+	margin: 10px 850px;
+	margin-right: 10px;   
+    text-align: center;
+    width: 33%;
+    vertical-align: top;
+    margin-top: 1%;
+    height: 550px;
+    box-sizing: border-box;
+    border: 1px solid #968f85;  
+    background-color: #ffffff;
+}
+
+form input{
+	width: 350px;
+	height: 40px;
+}
+
+.titulo-principal-cadastro{
+	 font-size: 30px;    
+    font-weight: bold;
+    margin: 20px;
+
+}
+
+.cadastrar-agora{	
+	width:45%;
+	margin: 60px 5px;
+    padding: 5px 0;
+    background: #ea1d2c;
+    color: white;    
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    transition: 1s all;
+    cursor: pointer;
+    margin: 50px 265px;
+
+}
