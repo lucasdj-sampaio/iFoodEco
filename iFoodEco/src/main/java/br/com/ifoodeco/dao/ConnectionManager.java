@@ -44,7 +44,7 @@ public class ConnectionManager {
 		}
 	}
 	
-	public int executeCommand(PreparedStatement stat) {
+	public int executeCommand(PreparedStatement stat, boolean makeCommit) {
 		int response = 0;
 		
 		try {
@@ -52,7 +52,9 @@ public class ConnectionManager {
 			
 			response = stat.executeUpdate();
 			
-			connection.commit();
+			if (makeCommit) {
+				connection.commit();
+			}	
 		}
 		catch (SQLException ex) 
 		{
