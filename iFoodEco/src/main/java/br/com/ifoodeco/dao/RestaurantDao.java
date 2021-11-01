@@ -1,5 +1,6 @@
 package br.com.ifoodeco.dao;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import br.com.ifoodeco.entity.Adress;
@@ -175,22 +176,117 @@ public class RestaurantDao {
 	}
 	
 	private int getPlainId(String plainName) {
-		
+		try {
+			
+			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_plano "
+					+ "FROM T_PLANO WHERER = ?");
+			
+			getId.setString(1, plainName);
+						
+			ResultSet result = conn.getData(getId);
+			
+			if (result.next()) {
+				return result.getInt(1);
+			}
+			
+			return 0;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return 0;
+		}
 	}
 	
 	private int getCategoryId(String categoryName) {
-		
+		try {
+			
+			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_categoria "
+					+ "FROM T_CATEGORIA WHERER nm_categoria = ?");
+			
+			getId.setString(1, categoryName);
+						
+			ResultSet result = conn.getData(getId);
+			
+			if (result.next()) {
+				return result.getInt(1);
+			}
+			
+			return 0;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return 0;
+		}
 	}
 	
 	private int getPixKeyId(String pixKey) {
-		
+		try {
+			
+			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT chave_pix "
+					+ "FROM T_PIX WHERER nm_chave = ?");
+			
+			getId.setString(1, pixKey);
+						
+			ResultSet result = conn.getData(getId);
+			
+			if (result.next()) {
+				return result.getInt(1);
+			}
+			
+			return 0;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return 0;
+		}
 	}
 	
 	private int getPackId(String packKey) {
-		
+		try {
+			
+			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_emb "
+					+ "FROM T_EMBALAGEM WHERER nm_emb = ?");
+			
+			getId.setString(1, packKey);
+						
+			ResultSet result = conn.getData(getId);
+			
+			if (result.next()) {
+				return result.getInt(1);
+			}
+			
+			return 0;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return 0;
+		}
 	}
 	
-	private String getPaymentKey(String packKey) {
-		
+	private String getPaymentKey(String payKey) {
+		try {
+			
+			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_pag "
+					+ "FROM T_FORMA_PAG WHERER descricao = ?");
+			
+			getId.setString(1, payKey);
+						
+			ResultSet result = conn.getData(getId);
+			
+			if (result.next()) {
+				return result.getString(1);
+			}
+			
+			return null;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return null;
+		}
 	}
 }
