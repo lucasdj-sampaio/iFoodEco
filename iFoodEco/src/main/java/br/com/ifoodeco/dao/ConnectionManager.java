@@ -12,6 +12,7 @@ public class ConnectionManager {
 	public ConnectionManager() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			connection.setAutoCommit(false);
 		}
 		catch (Exception ex) 
 		{
@@ -48,8 +49,6 @@ public class ConnectionManager {
 		int response = 0;
 		
 		try {
-			connection.setAutoCommit(false);
-			
 			response = stat.executeUpdate();
 			
 			if (makeCommit) {
@@ -67,9 +66,6 @@ public class ConnectionManager {
 			{
 				ex1.printStackTrace();
 			}
-		}
-		finally {
-			closeConnection();
 		}
 				
 		return response;		

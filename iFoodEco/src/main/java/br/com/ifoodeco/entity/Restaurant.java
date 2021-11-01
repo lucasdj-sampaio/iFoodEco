@@ -12,6 +12,8 @@ public class Restaurant {
 	private int agencyNumber;
 	private int accountNumber;
 	private boolean oilDiscart;
+	private String plain;
+	private String category;
 	private List<Pix> pixList;
 	private List<Packaging> packList;
 	private List<PayMethod> payList;
@@ -110,5 +112,21 @@ public class Restaurant {
 	
 	public void setPayList(List<PayMethod> payList) {
 		this.payList = payList;
+	}
+
+	public String getPlain() {
+		return plain;
+	}
+
+	public void setPlain(String plain) {
+		this.plain = plain;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 }
