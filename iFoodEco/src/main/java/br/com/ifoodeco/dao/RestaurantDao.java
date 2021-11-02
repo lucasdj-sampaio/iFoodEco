@@ -2,12 +2,7 @@ package br.com.ifoodeco.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import br.com.ifoodeco.entity.Adress;
-import br.com.ifoodeco.entity.Packaging;
-import br.com.ifoodeco.entity.PayMethod;
-import br.com.ifoodeco.entity.Pix;
 import br.com.ifoodeco.entity.Restaurant;
 
 public class RestaurantDao {
