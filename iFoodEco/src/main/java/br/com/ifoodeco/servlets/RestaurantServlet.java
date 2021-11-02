@@ -40,10 +40,21 @@ public class RestaurantServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		
+		Restaurant restaurant = 
+				dao.getRestaurant(Integer.parseInt(request.getHeader("restaurante").toString()));
+		
+		//Enviar DADOS JSP
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
+		    
+	    setIntoRestaurant(request);
+		
+		dao.insertRestautantDao(restaurant);
+	}
+	
+	private void setIntoRestaurant(HttpServletRequest request) {
 		
 		Enumeration<String> headerNames = request.getHeaderNames();
 		
@@ -64,13 +75,6 @@ public class RestaurantServlet extends HttpServlet {
             	}
             }
 	    }
-	    
-	    setIntoRestaurant(request);
-		
-		dao.insertRestautantDao(restaurant);
-	}
-	
-	private void setIntoRestaurant(HttpServletRequest request) {
 		
 		Adress adress = new Adress(
 				request.getAttribute("rua").toString()
@@ -78,7 +82,6 @@ public class RestaurantServlet extends HttpServlet {
 				, Integer.parseInt(request.getAttribute("numero").toString())
 				, request.getAttribute("complemento").toString());
 		
-		boolean oilDiscart = request.getAttribute("descarteOleo").toString().toUpperCase() == "SIM" ? true : false;
 		boolean scheduler = request.getAttribute("agendamento").toString().toUpperCase() == "SIM" ? true : false;
 		
 	    restaurant.setCnpjNumber(Integer.parseInt(request.getAttribute("cnpj").toString()));
@@ -88,7 +91,6 @@ public class RestaurantServlet extends HttpServlet {
 	    restaurant.setEmailAdress(request.getAttribute("email").toString());
 	    restaurant.setAgencyNumber(Integer.parseInt(request.getAttribute("agencia").toString()));
 	    restaurant.setAccountNumber(Integer.parseInt(request.getAttribute("conta").toString()));
-	    restaurant.setOilDiscart(oilDiscart);
 	    restaurant.setScheduledDelivery(scheduler);
 	    restaurant.setPlain(request.getAttribute("plano").toString());
 	    restaurant.setCategory(request.getAttribute("categoria").toString());

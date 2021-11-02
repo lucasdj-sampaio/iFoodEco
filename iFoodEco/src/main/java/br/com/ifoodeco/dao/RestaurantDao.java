@@ -2,6 +2,7 @@ package br.com.ifoodeco.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import br.com.ifoodeco.entity.Adress;
 import br.com.ifoodeco.entity.Packaging;
@@ -13,9 +14,53 @@ public class RestaurantDao {
 	
 	ConnectionManager conn = new ConnectionManager();
 	
+	public Restaurant getRestaurant(int cnpjNumber) {
+		
+		Restaurant restaurant = new Restaurant();
+	    restaurant.setCnpjNumber(cnpjNumber);
+		
+		try {
+			PreparedStatement getRestaurant = conn.getConnection().prepareStatement("SELECT nm_plano, "
+					+ "nm_categoria, nm_restaurante, nr_telefone, ent_agendada, email, nr_agencia, "
+					+ "nr_conta FROM T_CADASTRO CD INNER JOIN T_PLANO P INNER JOIN T_CATEGORIA C "
+					+ "WHERE CD.cd_planp = P.cd_plano "
+					+ "AND CD.cd_categoria = C.cd_categoria nr_cnpj = ?");
+			
+			getRestaurant.setInt(1, cnpjNumber);
+						
+			ResultSet result = conn.getData(getRestaurant);
+			
+			if (result.next()) {
+			    restaurant.setPlain(result.getString(1));
+			    restaurant.setCategory(result.getString(2));
+				restaurant.setName(result.getString(3));
+			    restaurant.setNumber(result.getInt(4));
+			    restaurant.setScheduledDelivery(result.getBoolean(5));
+			    restaurant.setEmailAdress(result.getString(6));
+			    restaurant.setAgencyNumber(result.getInt(7));
+			    restaurant.setAccountNumber(result.getInt(8));
+			}
+			
+		    restaurant.setAdress(AdressDao.getAdress(conn, cnpjNumber));
+		    restaurant.setPixList(PixDao.getAll(conn, cnpjNumber));
+		    restaurant.setPackList(PackagingDao.getAll(conn, cnpjNumber));
+		    restaurant.setPayList(PayDao.getAll(conn, cnpjNumber));
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+		
+		return restaurant;
+	}
+	
+	public List<Restaurant> getAll(){
+		return null;
+	}
+	
 	public boolean insertRestautantDao(Restaurant restaurant) {
 		try {
-			if (!insertAdress(restaurant.getAdress())) {
+			if (AdressDao.insertAdress(conn, restaurant.getAdress())) {
 				conn.getConnection().rollback();
 				return false;
 			}
@@ -25,17 +70,20 @@ public class RestaurantDao {
 				return false;
 			}
 			
-			if (!insertPix(restaurant.getPixList(), restaurant.getCnpjNumber())) {
+			if (PixDao.insertPix(conn, restaurant.getPixList()
+					, restaurant.getCnpjNumber())) {
 				conn.getConnection().rollback();
 				return false;
 			}
 			
-			if (!insertPack(restaurant.getPackList(), restaurant.getCnpjNumber())) {
+			if (PackagingDao.insertPack(conn, restaurant.getPackList()
+					, restaurant.getCnpjNumber())) {
 				conn.getConnection().rollback();
 				return false;
 			}
 			
-			if (!insertPay(restaurant.getPayList(), restaurant.getCnpjNumber())) {
+			if (PayDao.insertPay(conn, restaurant.getPayList()
+					, restaurant.getCnpjNumber())) {
 				conn.getConnection().rollback();
 				return false;
 			}
@@ -53,35 +101,12 @@ public class RestaurantDao {
 		}
 	}
 	
-	private boolean insertAdress(Adress adress) {
-		try {
-			PreparedStatement adressInsert = conn.getConnection().prepareStatement("INSERT INTO "
-					+ "T_ENDERECO VALUES (ENDERECO.Nextval, ?, ?, ?, ?)");
-			
-			adressInsert.setString(1, adress.getStreet());
-			adressInsert.setInt(1, adress.getCep());
-			adressInsert.setInt(1, adress.getNumber());
-			adressInsert.setString(1, adress.getComplement());
-			
-			if (conn.executeCommand(adressInsert, false) != 0) {
-				return true;
-			}
-			
-			return false;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return false;
-		}
-	}
-	
 	private boolean insertRestaurant(Restaurant restaurant) {
 		try {
 			
 			PreparedStatement restaurantInsert = conn.getConnection().prepareStatement("INSERT INTO "
 					+ "T_CADASTRO VALUES (?, (SELECT MAX(cd_endereco FROM T_ENDERECO)), "
-					+ "?, ?, ?, ?, ?, ?, ?, ?, ?)");
+					+ "?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			restaurantInsert.setInt(1, restaurant.getCnpjNumber());
 			restaurantInsert.setInt(2, getPlainId(restaurant.getPlain()));
@@ -92,7 +117,6 @@ public class RestaurantDao {
 			restaurantInsert.setString(7, restaurant.getEmailAdress());
 			restaurantInsert.setInt(8, restaurant.getAgencyNumber());
 			restaurantInsert.setInt(9, restaurant.getAccountNumber());
-			restaurantInsert.setBoolean(10, restaurant.isOilDiscart());
 						
 			if (conn.executeCommand(restaurantInsert, false) != 0) 
 			{
@@ -106,73 +130,6 @@ public class RestaurantDao {
 			ex.printStackTrace();
 			return false;
 		}	
-	}
-	
-	private boolean insertPix(List<Pix> pixList, int cnpjNumber) {
-		try {
-			for (Pix pix : pixList) {
-				
-				PreparedStatement pixInsert = conn.getConnection().prepareStatement("INSERT INTO "
-						+ "T_PIX_RESTAURANTE VALUES (PIX.Nextval, ?, ?, ?)");
-				
-				pixInsert.setInt(1, cnpjNumber);
-				pixInsert.setInt(2, getPixKeyId(pix.getKeyName()));
-				pixInsert.setString(3, pix.getValue());
-
-				conn.executeCommand(pixInsert, false);
-			}
-			
-			return true;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return false;
-		}
-	} 
-	
-	private boolean insertPack(List<Packaging> packList, int cnpjNumber) {
-		try {
-			for (Packaging pack : packList) {
-				
-				PreparedStatement packInsert = conn.getConnection().prepareStatement("INSERT INTO "
-						+ "T_USO_EMBALAGEM VALUES (EMBALAGEM.Nextval, ?, ?)");
-				
-				packInsert.setInt(1, cnpjNumber);
-				packInsert.setInt(2, getPackId(pack.getPackagingName()));
-
-				conn.executeCommand(packInsert, false);
-			}
-			
-			return true;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return false;
-		}
-	} 
-	
-	private boolean insertPay(List<PayMethod> paymentList, int cnpjNumber) {
-		try {
-			for (PayMethod payment : paymentList) {
-				
-				PreparedStatement packInsert = conn.getConnection().prepareStatement("INSERT INTO "
-						+ "T_PAG_RESTAURANTE VALUES (PAG.Nextval, ?, ?)");
-				
-				packInsert.setString(1, getPaymentKey(payment.getPayMethod()));
-				packInsert.setInt(2, cnpjNumber);
-
-				conn.executeCommand(packInsert, false);
-			}
-			
-			return true;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return false;
-		}
 	}
 	
 	private int getPlainId(String plainName) {
@@ -218,75 +175,6 @@ public class RestaurantDao {
 		{
 			ex.printStackTrace();
 			return 0;
-		}
-	}
-	
-	private int getPixKeyId(String pixKey) {
-		try {
-			
-			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT chave_pix "
-					+ "FROM T_PIX WHERER nm_chave = ?");
-			
-			getId.setString(1, pixKey);
-						
-			ResultSet result = conn.getData(getId);
-			
-			if (result.next()) {
-				return result.getInt(1);
-			}
-			
-			return 0;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return 0;
-		}
-	}
-	
-	private int getPackId(String packKey) {
-		try {
-			
-			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_emb "
-					+ "FROM T_EMBALAGEM WHERER nm_emb = ?");
-			
-			getId.setString(1, packKey);
-						
-			ResultSet result = conn.getData(getId);
-			
-			if (result.next()) {
-				return result.getInt(1);
-			}
-			
-			return 0;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return 0;
-		}
-	}
-	
-	private String getPaymentKey(String payKey) {
-		try {
-			
-			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_pag "
-					+ "FROM T_FORMA_PAG WHERER descricao = ?");
-			
-			getId.setString(1, payKey);
-						
-			ResultSet result = conn.getData(getId);
-			
-			if (result.next()) {
-				return result.getString(1);
-			}
-			
-			return null;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return null;
 		}
 	}
 }

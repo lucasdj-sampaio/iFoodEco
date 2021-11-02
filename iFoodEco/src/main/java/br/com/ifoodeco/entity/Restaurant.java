@@ -11,7 +11,6 @@ public class Restaurant {
 	private String emailAdress;
 	private int agencyNumber;
 	private int accountNumber;
-	private boolean oilDiscart;
 	private String plain;
 	private String category;
 	private List<Pix> pixList;
@@ -80,14 +79,6 @@ public class Restaurant {
 	
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
-	}
-	
-	public boolean isOilDiscart() {
-		return oilDiscart;
-	}
-	
-	public void setOilDiscart(boolean oilDiscart) {
-		this.oilDiscart = oilDiscart;
 	}
 	
 	public List<Pix> getPixList() {
