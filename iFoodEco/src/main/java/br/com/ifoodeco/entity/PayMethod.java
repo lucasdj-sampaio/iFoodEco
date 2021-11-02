@@ -4,6 +4,11 @@ public class PayMethod {
 	
 	private String payMethod;
 
+	public PayMethod(String payMethod) {
+		super();
+		this.payMethod = payMethod;
+	}
+	
 	public String getPayMethod() {
 		return payMethod;
 	}
