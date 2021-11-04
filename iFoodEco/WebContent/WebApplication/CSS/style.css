@@ -76,7 +76,7 @@ margin: 30px 0 10px
 }
 
 .background {
-	background-image: url("Imagem/fundo.jpg");
+	background-image: url("../Imagem/fundo.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
