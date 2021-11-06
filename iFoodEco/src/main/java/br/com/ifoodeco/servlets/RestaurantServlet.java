@@ -10,10 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.ifoodeco.dao.RestaurantDao;
 
-@WebServlet(description = "A Servlet how control some method about restaurant", urlPatterns = { "/AddRestaurantServlet" })
+@WebServlet(description = "This servlet create all data for restaurant", urlPatterns = { "/AddRestaurantServlet" })
 public class RestaurantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -35,19 +36,12 @@ public class RestaurantServlet extends HttpServlet {
 		  super.destroy();
 	}
 	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-			throws ServletException, IOException {
-		
-		Restaurant restaurant = 
-				RestaurantDao.getRestaurant(Integer.parseInt(request.getHeader("restaurante").toString()));
-		
-		//Enviar DADOS JSP
-	}
-
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
 		    
-	    setIntoRestaurant(request);
+		//HttpSession session = request.getSession();
+		
+		setIntoRestaurant(request);
 		
 	    RestaurantDao.insertRestaurantDao(restaurant);
 	}

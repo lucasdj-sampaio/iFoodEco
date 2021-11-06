@@ -1,9 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import br.com.ifoodeco.dao.AddressDao;
-import br.com.ifoodeco.dao.PackagingDao;
-import br.com.ifoodeco.dao.PayDao;
-import br.com.ifoodeco.dao.PixDao;
 import br.com.ifoodeco.dao.RestaurantDao;
 import br.com.ifoodeco.entity.Address;
 import br.com.ifoodeco.entity.Packaging;
