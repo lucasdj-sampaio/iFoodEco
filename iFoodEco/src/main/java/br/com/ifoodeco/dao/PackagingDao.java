@@ -13,8 +13,8 @@ public class PackagingDao {
 		List<Packaging> packList = new ArrayList<Packaging>();
 		
 		try {
-			PreparedStatement getPack = conn.getConnection().prepareStatement("SELECT nm_emb "
-					+ "FROM T_USO_EMBALAGEM UE INNER JOIN T_EMBALAGEM E "
+			PreparedStatement getPack = conn.getConnection().prepareStatement("SELECT nm_emb, "
+					+ "cd_relacao FROM T_USO_EMBALAGEM UE INNER JOIN T_EMBALAGEM E "
 					+ "WHERER UE.cd_emb = E.cd_emb AND nr_cnpj = ?");
 			
 			getPack.setInt(1, cnpjNumber);
@@ -22,7 +22,10 @@ public class PackagingDao {
 			ResultSet result = conn.getData(getPack);
 			
 			while (result.next()) {
-				packList.add(new Packaging(result.getString(1)));
+				Packaging pack = new Packaging(result.getString(1));
+				pack.setId(result.getInt(2));
+				
+				packList.add(pack);
 			}
 		}
 		catch (SQLException ex) 
@@ -52,6 +55,9 @@ public class PackagingDao {
 		catch (SQLException ex) 
 		{
 			ex.printStackTrace();
+		}
+		finally {
+			conn.closeConnection();
 		}
 		
 		return packList;
@@ -101,4 +107,60 @@ public class PackagingDao {
 			return 0;
 		}
 	}
+	
+	public boolean updatePack(Packaging pack) {
+		ConnectionManager conn = new ConnectionManager();
+		
+		try {
+						
+			PreparedStatement packUpdate = conn.getConnection().prepareStatement("UPDATE T_USO_EMBALAGEM "
+						+ "SET CD_EMB = ?"
+						+ "WHERE CD_EMB = ?");
+				
+			packUpdate.setInt(1, getPackId(conn, pack.getPackagingName()));
+			packUpdate.setInt(2, pack.getId());
+				
+			packUpdate.executeUpdate();
+
+			if (conn.executeCommand(packUpdate, false) == 1) {
+				conn.getConnection().commit();
+				
+				return true;
+			}
+			
+			return false;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return false;
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
+	
+	public boolean deletePack(Packaging pack) {
+		ConnectionManager conn = new ConnectionManager();
+		
+		try {
+			PreparedStatement packDelete = conn.getConnection().prepareStatement("DELETE FROM T_USO_EMBALAGEM"
+					+ "WHERE CD_RELACAO = ?");
+				
+			packDelete.setInt(1, pack.getId());
+			
+			conn.executeCommand(packDelete, true);
+			
+			return true;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return false;
+		}
+		finally 
+		{
+			conn.closeConnection();
+		}
+	} 
 }

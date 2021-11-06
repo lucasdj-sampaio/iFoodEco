@@ -2,6 +2,7 @@ package br.com.ifoodeco.entity;
 
 public class Adress {
 
+	private int Id;
 	private String street;
 	private int cep;
 	private int number;
@@ -13,7 +14,15 @@ public class Adress {
 		this.number = aNumber;
 		this.complement = aComplement;
 	}
-
+	
+	public int getId() {
+		return Id;
+	}
+	
+	public void setId(int id){
+		this.Id = id;
+	}
+	
 	public String getStreet() {
 		return street;
 	}

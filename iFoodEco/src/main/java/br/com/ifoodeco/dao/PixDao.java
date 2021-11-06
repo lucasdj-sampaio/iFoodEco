@@ -53,6 +53,9 @@ public class PixDao {
 		{
 			ex.printStackTrace();
 		}
+		finally {
+			conn.closeConnection();
+		}
 		
 		return pixList;
 	}
@@ -102,4 +105,60 @@ public class PixDao {
 			return 0;
 		}
 	}
+	
+	public boolean updatePix(Pix pix, int cnpjNumber) {
+		ConnectionManager conn = new ConnectionManager();
+		
+		try {
+			PreparedStatement pixUpdate = conn.getConnection().prepareStatement("UPDATE T_PIX_RESTAURANTE "
+						+ "SET VLR_CHAVE = ?)"
+						+ "WHERE CHAVE_PIX = ? AND NR_CNPJ = ?");
+				
+			pixUpdate.setString(1, pix.getValue());
+			pixUpdate.setString(2, pix.getKeyName());
+			pixUpdate.setInt(3, cnpjNumber);
+				
+			pixUpdate.executeUpdate();
+
+			if(conn.executeCommand(pixUpdate, false) == 1) {
+				
+				conn.getConnection().commit();
+				return true;
+			}
+			
+			return false;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return false;
+		}
+		finally {
+			conn.closeConnection();
+		}
+	}
+	
+	public boolean deletePix(Pix pix, int cnpjNumber) {
+		ConnectionManager conn = new ConnectionManager();
+		
+		try {
+			PreparedStatement pixDelete = conn.getConnection().prepareStatement("DELETE FROM T_PIX_RESTAURANTE"
+				+ "WHERE CHAVE_PIX = ? AND NR_CNPJ = ?");
+		
+			pixDelete.setString(1, pix.getKeyName());
+			pixDelete.setInt(2, cnpjNumber);
+
+			conn.executeCommand(pixDelete, true);
+						
+			return true;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return false;
+		}
+		finally {
+			conn.closeConnection();
+		}
+	} 
 }

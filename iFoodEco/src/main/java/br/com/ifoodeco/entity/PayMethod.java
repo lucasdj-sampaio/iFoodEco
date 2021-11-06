@@ -2,6 +2,7 @@ package br.com.ifoodeco.entity;
 
 public class PayMethod {
 	
+	private int Id;
 	private String payMethod;
 
 	public PayMethod(String payMethod) {
@@ -9,6 +10,14 @@ public class PayMethod {
 		this.payMethod = payMethod;
 	}
 	
+	public int getId() {
+		return Id;
+	}
+	
+	public void setId(int id){
+		this.Id = id;
+	}
+		
 	public String getPayMethod() {
 		return payMethod;
 	}

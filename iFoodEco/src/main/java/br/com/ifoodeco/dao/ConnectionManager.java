@@ -21,7 +21,10 @@ public class ConnectionManager {
 	}
 	
 	public Connection getConnection() {
-		openConnection();
+		if	(connection == null) {
+			openConnection();
+		}
+		
 		return this.connection;
 	}
 	
