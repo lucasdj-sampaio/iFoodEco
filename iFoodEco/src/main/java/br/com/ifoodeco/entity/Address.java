@@ -1,6 +1,6 @@
 package br.com.ifoodeco.entity;
 
-public class Adress {
+public class Address {
 
 	private int Id;
 	private String street;
@@ -8,7 +8,7 @@ public class Adress {
 	private int number;
 	private String complement;
 	
-	public Adress(String aStreet, int aCep, int aNumber, String aComplement) {
+	public Address(String aStreet, int aCep, int aNumber, String aComplement) {
 		this.street = aStreet;
 		this.cep = aCep;
 		this.number = aNumber;

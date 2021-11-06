@@ -76,7 +76,7 @@ public class RestaurantServlet extends HttpServlet {
             }
 	    }
 		
-		Adress adress = new Adress(
+		Address address = new Address(
 				request.getAttribute("rua").toString()
 				, Integer.parseInt(request.getAttribute("cep").toString())
 				, Integer.parseInt(request.getAttribute("numero").toString())
@@ -85,14 +85,14 @@ public class RestaurantServlet extends HttpServlet {
 		boolean scheduler = request.getAttribute("agendamento").toString().toUpperCase() == "SIM" ? true : false;
 		
 	    restaurant.setCnpjNumber(Integer.parseInt(request.getAttribute("cnpj").toString()));
-	    restaurant.setAdress(adress);
+	    restaurant.setAddress(address);
 	    restaurant.setName(request.getAttribute("nome").toString());
 	    restaurant.setNumber(Integer.parseInt(request.getAttribute("telefone").toString()));
-	    restaurant.setEmailAdress(request.getAttribute("email").toString());
+	    restaurant.setEmailAddress(request.getAttribute("email").toString());
 	    restaurant.setAgencyNumber(Integer.parseInt(request.getAttribute("agencia").toString()));
 	    restaurant.setAccountNumber(Integer.parseInt(request.getAttribute("conta").toString()));
 	    restaurant.setScheduledDelivery(scheduler);
-	    restaurant.setPlain(request.getAttribute("plano").toString());
+	    restaurant.setPlan(request.getAttribute("plano").toString());
 	    restaurant.setCategory(request.getAttribute("categoria").toString());
 	    restaurant.setPixList(pixList);
 	    restaurant.setPackList(packList);

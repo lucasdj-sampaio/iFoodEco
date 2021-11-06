@@ -25,17 +25,17 @@ public class RestaurantDao {
 			ResultSet result = conn.getData(getRestaurant);
 			
 			if (result.next()) {
-			    restaurant.setPlain(result.getString(1));
+			    restaurant.setPlan(result.getString(1));
 			    restaurant.setCategory(result.getString(2));
 				restaurant.setName(result.getString(3));
 			    restaurant.setNumber(result.getInt(4));
 			    restaurant.setScheduledDelivery(result.getBoolean(5));
-			    restaurant.setEmailAdress(result.getString(6));
+			    restaurant.setEmailAddress(result.getString(6));
 			    restaurant.setAgencyNumber(result.getInt(7));
 			    restaurant.setAccountNumber(result.getInt(8));
 			}
 			
-		    restaurant.setAdress(AdressDao.getAdress(conn, cnpjNumber));
+		    restaurant.setAddress(AddressDao.getAddress(conn, cnpjNumber));
 		    restaurant.setPixList(PixDao.getAll(conn, cnpjNumber));
 		    restaurant.setPackList(PackagingDao.getAll(conn, cnpjNumber));
 		    restaurant.setPayList(PayDao.getAll(conn, cnpjNumber));
@@ -59,7 +59,7 @@ public class RestaurantDao {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {	
-			if (AdressDao.insertAdress(conn, restaurant.getAdress())) {
+			if (AddressDao.insertAddress(conn, restaurant.getAddress())) {
 				conn.getConnection().rollback();
 				return false;
 			}
@@ -108,12 +108,12 @@ public class RestaurantDao {
 					+ "?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			restaurantInsert.setInt(1, restaurant.getCnpjNumber());
-			restaurantInsert.setInt(2, getPlainId(conn, restaurant.getPlain()));
+			restaurantInsert.setInt(2, getPlanId(conn, restaurant.getPlan()));
 			restaurantInsert.setInt(3, getCategoryId(conn, restaurant.getCategory()));
 			restaurantInsert.setString(4, restaurant.getName());
 			restaurantInsert.setInt(5, restaurant.getNumber());
 			restaurantInsert.setBoolean(6, restaurant.isScheduledDelivery());
-			restaurantInsert.setString(7, restaurant.getEmailAdress());
+			restaurantInsert.setString(7, restaurant.getEmailAddress());
 			restaurantInsert.setInt(8, restaurant.getAgencyNumber());
 			restaurantInsert.setInt(9, restaurant.getAccountNumber());
 						
@@ -131,7 +131,7 @@ public class RestaurantDao {
 		}	
 	}
 	
-	private int getPlainId(ConnectionManager conn, String plainName) {
+	private int getPlanId(ConnectionManager conn, String plainName) {
 		try {
 			
 			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_plano "
@@ -186,12 +186,12 @@ public class RestaurantDao {
 					+ ", NR_TELEFONE = ?, ENT_AGENDADA = ?, EMAIL = ?, NR_AGENCIA = ?"
 					+ ", NR_CONTA = ? WHERE NR_CNPJ = ?");
 			
-			restaurantUpdate.setInt(1, getPlainId(conn, restaurant.getPlain()));
+			restaurantUpdate.setInt(1, getPlanId(conn, restaurant.getPlan()));
 			restaurantUpdate.setInt(2, getCategoryId(conn, restaurant.getCategory()));
 			restaurantUpdate.setString(3, restaurant.getName());
 			restaurantUpdate.setInt(4, restaurant.getNumber());
 			restaurantUpdate.setBoolean(5, restaurant.isScheduledDelivery());
-			restaurantUpdate.setString(6, restaurant.getEmailAdress());
+			restaurantUpdate.setString(6, restaurant.getEmailAddress());
 			restaurantUpdate.setInt(7, restaurant.getAgencyNumber());
 			restaurantUpdate.setInt(8, restaurant.getAccountNumber());
 			restaurantUpdate.setInt(9, restaurant.getCnpjNumber());

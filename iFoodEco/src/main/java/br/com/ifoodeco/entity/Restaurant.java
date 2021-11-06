@@ -4,14 +4,14 @@ import java.util.List;
 public class Restaurant {
 	
 	private int cnpjNumber;
-	private Adress adress;
+	private Address address;
 	private String name;
 	private int number;
 	private boolean scheduledDelivery;
-	private String emailAdress;
+	private String emailAddress;
 	private int agencyNumber;
 	private int accountNumber;
-	private String plain;
+	private String plan;
 	private String category;
 	private List<Pix> pixList;
 	private List<Packaging> packList;
@@ -25,12 +25,12 @@ public class Restaurant {
 		this.cnpjNumber = cnpjNumber;
 	}
 	
-	public Adress getAdress() {
-		return adress;
+	public Address getAddress() {
+		return address;
 	}
 	
-	public void setAdress(Adress adress) {
-		this.adress = adress;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 	
 	public String getName() {
@@ -57,12 +57,12 @@ public class Restaurant {
 		this.scheduledDelivery = scheduledDelivery;
 	}
 	
-	public String getEmailAdress() {
-		return emailAdress;
+	public String getEmailAddress() {
+		return emailAddress;
 	}
 	
-	public void setEmailAdress(String emailAdress) {
-		this.emailAdress = emailAdress;
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 	
 	public int getAgencyNumber() {
@@ -105,12 +105,12 @@ public class Restaurant {
 		this.payList = payList;
 	}
 
-	public String getPlain() {
-		return plain;
+	public String getPlan() {
+		return plan;
 	}
 
-	public void setPlain(String plain) {
-		this.plain = plain;
+	public void setPlan(String plan) {
+		this.plan = plan;
 	}
 
 	public String getCategory() {
