@@ -2,7 +2,7 @@ package br.com.ifoodeco.entity;
 
 public class Packaging {
 	
-	private int Id; 
+	private int id; 
 	private String packagingName;
 	
 	public Packaging(String packagingName) {
@@ -11,11 +11,11 @@ public class Packaging {
 	}
 	
 	public int getId() {
-		return Id;
+		return id;
 	}
 	
 	public void setId(int id){
-		this.Id = id;
+		this.id = id;
 	}
 	
 	public String getPackagingName() {

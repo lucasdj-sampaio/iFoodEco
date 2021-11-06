@@ -2,7 +2,7 @@ package br.com.ifoodeco.entity;
 
 public class Address {
 
-	private int Id;
+	private int id;
 	private String street;
 	private int cep;
 	private int number;
@@ -16,11 +16,11 @@ public class Address {
 	}
 	
 	public int getId() {
-		return Id;
+		return id;
 	}
 	
 	public void setId(int id){
-		this.Id = id;
+		this.id = id;
 	}
 	
 	public String getStreet() {

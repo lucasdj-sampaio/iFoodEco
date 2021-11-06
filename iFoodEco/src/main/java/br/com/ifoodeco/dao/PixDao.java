@@ -12,8 +12,8 @@ public class PixDao {
 		List<Pix> pixList = new ArrayList<Pix>();
 		
 		try {
-			PreparedStatement getPix = conn.getConnection().prepareStatement("SELECT nm_chave, vlr_chave "
-					+ "FROM T_PIX_RESTAURANTE R INNER JOIN T_PIX P "
+			PreparedStatement getPix = conn.getConnection().prepareStatement("SELECT nm_chave, vlr_chave, "
+					+ "cd_relacao FROM T_PIX_RESTAURANTE R INNER JOIN T_PIX P "
 					+ "WHERER P.chave_pix = R.chave_pix AND nr_cnpj = ?");
 			
 			getPix.setInt(1, cnpjNumber);
@@ -21,8 +21,12 @@ public class PixDao {
 			ResultSet result = conn.getData(getPix);
 			
 			while (result.next()) {
-				pixList.add(new Pix(result.getString(1)
-						, result.getString(2)));
+				Pix pix = new Pix(result.getString(1)
+						, result.getString(2));
+				
+				pix.setId(result.getInt(3));
+				
+				pixList.add(pix);
 			}
 		}
 		catch (SQLException ex) 
@@ -106,17 +110,17 @@ public class PixDao {
 		}
 	}
 	
-	public boolean updatePix(Pix pix, int cnpjNumber) {
+	public boolean updatePix(Pix pix) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
 			PreparedStatement pixUpdate = conn.getConnection().prepareStatement("UPDATE T_PIX_RESTAURANTE "
-						+ "SET VLR_CHAVE = ?)"
-						+ "WHERE CHAVE_PIX = ? AND NR_CNPJ = ?");
+						+ "SET VLR_CHAVE = ?, CHAVE_PIX = ?)"
+						+ "WHERE CD_RELACAO = ?");
 				
 			pixUpdate.setString(1, pix.getValue());
 			pixUpdate.setString(2, pix.getKeyName());
-			pixUpdate.setInt(3, cnpjNumber);
+			pixUpdate.setInt(3, pix.getId());
 				
 			pixUpdate.executeUpdate();
 
@@ -138,15 +142,14 @@ public class PixDao {
 		}
 	}
 	
-	public boolean deletePix(Pix pix, int cnpjNumber) {
+	public boolean deletePix(Pix pix) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
 			PreparedStatement pixDelete = conn.getConnection().prepareStatement("DELETE FROM T_PIX_RESTAURANTE"
-				+ "WHERE CHAVE_PIX = ? AND NR_CNPJ = ?");
+				+ "WHERE CD_RELACAO = ?");
 		
-			pixDelete.setString(1, pix.getKeyName());
-			pixDelete.setInt(2, cnpjNumber);
+			pixDelete.setInt(1, pix.getId());
 
 			conn.executeCommand(pixDelete, true);
 						
