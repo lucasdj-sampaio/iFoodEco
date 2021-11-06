@@ -28,11 +28,11 @@
 			<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 			<div class="formulario">
-				<form>
+				<form action="secundStep" method="post">
 					<label for="cep" style="font-size: 15px">CEP</label>
-					<input id="cep" type="text" required style="width: 500px; height: 40px; font-size: 17px" />
+					<input name="cep" id="cep" type="text" required style="width: 500px; height: 40px; font-size: 17px" />
 					<label for="uf"style="font-size: 15px; margin: 20px 0">Estado</label>
-					<select id="uf" style="width: 500px; height: 40px;font-size: 17px;" >
+					<select name="estado" id="uf" style="width: 500px; height: 40px;font-size: 17px;" >
 						<option value="AC">Acre</option>
 						<option value="AL">Alagoas</option>
 						<option value="AP">Amapá</option>
@@ -61,18 +61,22 @@
 						<option value="SE">Sergipe</option>
 						<option value="TO">Tocantins</option>
 					</select>
+					
 					<label for="bairro"style="font-size: 15px; margin: 20px 0">Bairro</label>
-					<input id="bairro" type="text" required style="width: 500px; height: 40px; font-size: 17px" />
+					<input name="bairro" id="bairro" type="text" required style="width: 500px; height: 40px; font-size: 17px" />
 					<label for="logradouro"style="font-size: 15px; margin: 20px 0">Endereço</label>
-					<input id="logradouro" type="text" required style="width: 500px; height: 40px; font-size: 17px";/>				
+					<input name="logradouro" id="logradouro" type="text" required style="width: 500px; height: 40px; font-size: 17px";/>				
+					
 					<div class="alinhar" style="display: inline-flex;">
-					<label for="numero"style="font-size: 15px; margin: 20px 0">Número</label>				
-					<label for="complemento"style="font-size: 15px; margin: 20px 210px">Complemento</label>			
+						<label for="numero"style="font-size: 15px; margin: 20px 0">Número</label>				
+						<label for="complemento"style="font-size: 15px; margin: 20px 210px">Complemento</label>			
 					</div>
+					
 					<div class="alinhar" style="display: inline-flex;">				
-					<input id="numero" type="text" style="width: 240px; height: 40px; font-size: 17px;" />				
-					<input id="complemento" type="text" style=" width: 240px; height: 40px; font-size: 17px; margin-left: 15px"/>	
-					</div>			
+						<input name="numero" id="numero" type="text" style="width: 240px; height: 40px; font-size: 17px;" />				
+						<input name="complemento" id="complemento" type="text" style=" width: 240px; height: 40px; font-size: 17px; margin-left: 15px"/>	
+					</div>
+
 					<input type="submit" value="Continuar" class="enviar">
 				</form>
 			</div>

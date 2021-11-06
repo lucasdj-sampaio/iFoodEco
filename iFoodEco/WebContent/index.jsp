@@ -9,7 +9,7 @@
         <link rel="icon" href="Imagem/logo_aba.png">
     </head>
 
-    <header class="faixa-dois"styl style="background-color: #ffffff">
+    <header class="faixa-dois" style="background-color: #ffffff">
         <div class="caixa"style="display: inline-flex; ">        	
         <h1 class="logo_index" ><img src="Imagem/logo_ifood_maior.png" alt="Logo Ifood"></h1>                    
         </div>            
@@ -22,22 +22,21 @@
                 <h3 class="subtitulo-cadastro" >Entre e ganhe 1 mês de mensalidade grátis!</h3>
 			</div>		
 
-			<form name="first" action="FirstStep" method="post">
+			<form name="first" action="firstStep" method="post">
 				<label for="nomeesobrenome" style="font-weight: bold; font-size: 18px;">Nome Completo</label>
                 
-                <input type="text" name="yourName" id="nomeesobrenome" class="input-padrao" required placeholder="João da Silva">
+                <input type="text" name="nome" id="nomeesobrenome" class="input-padrao" required placeholder="João da Silva">
 				
                 <label for="email"style="font-weight: bold; font-size: 18px;">E-mail</label>
                 
-                <input type="email" name="mailAddress" id="email"class="input-padrao"required placeholder="email@email.com">	
+                <input type="email" name="email" id="email"class="input-padrao"required placeholder="email@email.com">	
             
                 <label for="telefone" style="font-weight: bold; font-size: 18px">Telefone</label>
 
-                <input type="tel" name="celPhone" id="telefone" class="input-padrao" required placeholder ="(00) 00000-0000">
+                <input type="tel" name="telefone" id="telefone" class="input-padrao" required placeholder ="(00) 00000-0000">
 
                 <input type="submit" value="Cadastrar agora" class="cadastrar-agora" style="margin: 50px 18px;">
-            </form>
-           </div>		
+            </form>		
         </main>
     </body>
 </html>
