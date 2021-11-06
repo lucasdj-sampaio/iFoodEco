@@ -8,15 +8,15 @@ import br.com.ifoodeco.entity.Pix;
 
 public class PixDao {
 	
-	public static List<Pix> getAll(ConnectionManager conn, int cnpjNumber){
+	public static List<Pix> getAll(ConnectionManager conn, long cnpjNumber){
 		List<Pix> pixList = new ArrayList<Pix>();
 		
 		try {
 			PreparedStatement getPix = conn.getConnection().prepareStatement("SELECT nm_chave, vlr_chave, "
-					+ "cd_relacao FROM T_PIX_RESTAURANTE R INNER JOIN T_PIX P "
-					+ "WHERER P.chave_pix = R.chave_pix AND nr_cnpj = ?");
+					+ "cd_relacao FROM T_PIX_RESTAURANTE R, T_PIX P "
+					+ "WHERE P.chave_pix = R.chave_pix AND nr_cnpj = ?");
 			
-			getPix.setInt(1, cnpjNumber);
+			getPix.setLong(1, cnpjNumber);
 						
 			ResultSet result = conn.getData(getPix);
 			
@@ -37,7 +37,41 @@ public class PixDao {
 		return pixList;
 	}
 	
-	public List<Pix> getAll(){
+	public static List<Pix> getAll(long cnpjNumber){
+		ConnectionManager conn = new ConnectionManager();
+		
+		List<Pix> pixList = new ArrayList<Pix>();
+		
+		try {
+			PreparedStatement getPix = conn.getConnection().prepareStatement("SELECT nm_chave, vlr_chave, "
+					+ "cd_relacao FROM T_PIX_RESTAURANTE R, T_PIX P "
+					+ "WHERE P.chave_pix = R.chave_pix AND nr_cnpj = ?");
+			
+			getPix.setLong(1, cnpjNumber);
+						
+			ResultSet result = conn.getData(getPix);
+			
+			while (result.next()) {
+				Pix pix = new Pix(result.getString(1)
+						, result.getString(2));
+				
+				pix.setId(result.getInt(3));
+				
+				pixList.add(pix);
+			}
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return pixList;
+	}
+	
+	public static List<Pix> getAll(){
 		ConnectionManager conn = new ConnectionManager();
 		
 		List<Pix> pixList = new ArrayList<Pix>();
@@ -64,14 +98,14 @@ public class PixDao {
 		return pixList;
 	}
 	
-	public static boolean insertPix(ConnectionManager conn, List<Pix> pixList, int cnpjNumber) {
+	public static boolean insertPix(ConnectionManager conn, List<Pix> pixList, long cnpjNumber) {
 		try {
 			for (Pix pix : pixList) {
 				
 				PreparedStatement pixInsert = conn.getConnection().prepareStatement("INSERT INTO "
 						+ "T_PIX_RESTAURANTE VALUES (PIX.Nextval, ?, ?, ?)");
 				
-				pixInsert.setInt(1, cnpjNumber);
+				pixInsert.setLong(1, cnpjNumber);
 				pixInsert.setInt(2, getPixKeyId(conn, pix.getKeyName()));
 				pixInsert.setString(3, pix.getValue());
 
@@ -91,7 +125,7 @@ public class PixDao {
 		try {
 			
 			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT chave_pix "
-					+ "FROM T_PIX WHERER nm_chave = ?");
+					+ "FROM T_PIX WHERE nm_chave = ?");
 			
 			getId.setString(1, pixKey);
 						
@@ -110,27 +144,27 @@ public class PixDao {
 		}
 	}
 	
-	public boolean updatePix(Pix pix) {
+	public static boolean updatePix(Pix pix) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
 			PreparedStatement pixUpdate = conn.getConnection().prepareStatement("UPDATE T_PIX_RESTAURANTE "
-						+ "SET VLR_CHAVE = ?, CHAVE_PIX = ?)"
+						+ "SET VLR_CHAVE = ?, CHAVE_PIX = ? "
 						+ "WHERE CD_RELACAO = ?");
 				
 			pixUpdate.setString(1, pix.getValue());
-			pixUpdate.setString(2, pix.getKeyName());
+			pixUpdate.setInt(2, getPixKeyId(conn, pix.getKeyName()));
 			pixUpdate.setInt(3, pix.getId());
-				
-			pixUpdate.executeUpdate();
 
 			if(conn.executeCommand(pixUpdate, false) == 1) {
-				
 				conn.getConnection().commit();
 				return true;
 			}
-			
-			return false;
+			else
+			{
+				conn.getConnection().rollback();
+				return false;
+			}
 		}
 		catch (SQLException ex) 
 		{
@@ -142,7 +176,7 @@ public class PixDao {
 		}
 	}
 	
-	public boolean deletePix(Pix pix) {
+	public static boolean deletePix(Pix pix) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {

@@ -6,13 +6,44 @@ import br.com.ifoodeco.entity.Address;
 
 public class AddressDao {
 
-	public static Address getAddress(ConnectionManager conn, int cnpjNumber){
+	public static Address getAddress(long cnpjNumber){
+		ConnectionManager conn = new ConnectionManager();
+		
 		try {
 			PreparedStatement getAddress = conn.getConnection().prepareStatement("SELECT logradouro, "
-					+ "cep, nr_logradouro, complemento, cd_endereco FROM T_ENDERECO E INNER JOIN T_CADASTRO C "
-					+ "WHERER E.cd_endereco = C.cd_endereco AND nr_cnpj = ?");
+					+ "cep, nr_logradouro, complemento, E.cd_endereco FROM T_ENDERECO E, T_CADASTRO C "
+					+ "WHERE E.cd_endereco = C.cd_endereco AND nr_cnpj = ?");
 			
-			getAddress.setInt(1, cnpjNumber);
+			getAddress.setLong(1, cnpjNumber);
+						
+			ResultSet result = conn.getData(getAddress);
+			
+			if (result.next()) {
+				 Address address = new Address(result.getString(1), result.getInt(2), result.getInt(3)
+						, result.getString(4));
+				 address.setId(result.getInt(5));
+				 
+				 return address;
+			}
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return null;
+	}
+	
+	public static Address getAddress(ConnectionManager conn, long cnpjNumber){
+		try {
+			PreparedStatement getAddress = conn.getConnection().prepareStatement("SELECT logradouro, "
+					+ "cep, nr_logradouro, complemento, E.cd_endereco FROM T_ENDERECO E, T_CADASTRO C "
+					+ "WHERE E.cd_endereco = C.cd_endereco AND nr_cnpj = ?");
+			
+			getAddress.setLong(1, cnpjNumber);
 						
 			ResultSet result = conn.getData(getAddress);
 			
@@ -54,8 +85,8 @@ public class AddressDao {
 			return false;
 		}
 	}
-	
-	public boolean updateAddress(Address address) {
+		
+	public static boolean updateAddress(Address address) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
@@ -69,14 +100,14 @@ public class AddressDao {
 			  addressUpdate.setString(4, address.getComplement());
 			  addressUpdate.setInt(5, address.getId());
 			  
-			  addressUpdate.executeUpdate();
-
 			if (conn.executeCommand(addressUpdate, false) == 1) {
 				conn.getConnection().commit();
 				return true;
 			}
-			
-			return false;
+			else {
+				conn.getConnection().rollback();
+				return false;
+			}
 		}
 		catch (SQLException ex) 
 		{

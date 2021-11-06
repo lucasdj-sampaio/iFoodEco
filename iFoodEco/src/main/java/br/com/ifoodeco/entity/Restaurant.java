@@ -3,10 +3,10 @@ import java.util.List;
 
 public class Restaurant {
 	
-	private int cnpjNumber;
+	private long cnpjNumber;
 	private Address address;
 	private String name;
-	private int number;
+	private long number;
 	private boolean scheduledDelivery;
 	private String emailAddress;
 	private int agencyNumber;
@@ -17,11 +17,11 @@ public class Restaurant {
 	private List<Packaging> packList;
 	private List<PayMethod> payList;
 	
-	public int getCnpjNumber() {
+	public long getCnpjNumber() {
 		return cnpjNumber;
 	}
 	
-	public void setCnpjNumber(int cnpjNumber) {
+	public void setCnpjNumber(long cnpjNumber) {
 		this.cnpjNumber = cnpjNumber;
 	}
 	
@@ -41,11 +41,11 @@ public class Restaurant {
 		this.name = name;
 	}
 	
-	public int getNumber() {
+	public long getNumber() {
 		return number;
 	}
 	
-	public void setNumber(int number) {
+	public void setNumber(long number) {
 		this.number = number;
 	}
 	

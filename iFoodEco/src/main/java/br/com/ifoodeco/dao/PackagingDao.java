@@ -9,15 +9,15 @@ import br.com.ifoodeco.entity.Packaging;
 
 public class PackagingDao {
 
-	public static List<Packaging> getAll(ConnectionManager conn, int cnpjNumber){
+	public static List<Packaging> getAll(ConnectionManager conn, long cnpjNumber){
 		List<Packaging> packList = new ArrayList<Packaging>();
 		
 		try {
 			PreparedStatement getPack = conn.getConnection().prepareStatement("SELECT nm_emb, "
-					+ "cd_relacao FROM T_USO_EMBALAGEM UE INNER JOIN T_EMBALAGEM E "
-					+ "WHERER UE.cd_emb = E.cd_emb AND nr_cnpj = ?");
+					+ "cd_relacao FROM T_USO_EMBALAGEM UE, T_EMBALAGEM E "
+					+ "WHERE UE.cd_emb = E.cd_emb AND nr_cnpj = ?");
 			
-			getPack.setInt(1, cnpjNumber);
+			getPack.setLong(1, cnpjNumber);
 						
 			ResultSet result = conn.getData(getPack);
 			
@@ -36,8 +36,40 @@ public class PackagingDao {
 		return packList;
 	}
 	
+	public static List<Packaging> getAll(long cnpjNumber){
+		ConnectionManager conn = new ConnectionManager();
+		
+		List<Packaging> packList = new ArrayList<Packaging>();
+		
+		try {
+			PreparedStatement getPack = conn.getConnection().prepareStatement("SELECT nm_emb, "
+					+ "cd_relacao FROM T_USO_EMBALAGEM UE, T_EMBALAGEM E "
+					+ "WHERE UE.cd_emb = E.cd_emb AND nr_cnpj = ?");
+			
+			getPack.setLong(1, cnpjNumber);
+						
+			ResultSet result = conn.getData(getPack);
+			
+			while (result.next()) {
+				Packaging pack = new Packaging(result.getString(1));
+				pack.setId(result.getInt(2));
+				
+				packList.add(pack);
+			}
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return packList;
+	}
+	
 	//Get All pack methods to show on JSP
-	public List<Packaging> getAll(){
+	public static List<Packaging> getAll(){
 		ConnectionManager conn = new ConnectionManager();
 		
 		List<Packaging> packList = new ArrayList<Packaging>();
@@ -63,14 +95,14 @@ public class PackagingDao {
 		return packList;
 	} 
 	
-	public static boolean insertPack(ConnectionManager conn, List<Packaging> packList, int cnpjNumber) {
+	public static boolean insertPack(ConnectionManager conn, List<Packaging> packList, long cnpjNumber) {
 		try {
 			for (Packaging pack : packList) {
 				
 				PreparedStatement packInsert = conn.getConnection().prepareStatement("INSERT INTO "
 						+ "T_USO_EMBALAGEM VALUES (EMBALAGEM.Nextval, ?, ?)");
 				
-				packInsert.setInt(1, cnpjNumber);
+				packInsert.setLong(1, cnpjNumber);
 				packInsert.setInt(2, getPackId(conn, pack.getPackagingName()));
 
 				conn.executeCommand(packInsert, false);
@@ -89,7 +121,7 @@ public class PackagingDao {
 		try {
 			
 			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_emb "
-					+ "FROM T_EMBALAGEM WHERER nm_emb = ?");
+					+ "FROM T_EMBALAGEM WHERE nm_emb = ?");
 			
 			getId.setString(1, packKey);
 						
@@ -108,27 +140,27 @@ public class PackagingDao {
 		}
 	}
 	
-	public boolean updatePack(Packaging pack) {
+	public static boolean updatePack(Packaging pack) {
 		ConnectionManager conn = new ConnectionManager();
 		
-		try {
-						
+		try {			
 			PreparedStatement packUpdate = conn.getConnection().prepareStatement("UPDATE T_USO_EMBALAGEM "
 						+ "SET CD_EMB = ?"
 						+ "WHERE CD_EMB = ?");
 				
 			packUpdate.setInt(1, getPackId(conn, pack.getPackagingName()));
 			packUpdate.setInt(2, pack.getId());
-				
-			packUpdate.executeUpdate();
 
 			if (conn.executeCommand(packUpdate, false) == 1) {
 				conn.getConnection().commit();
 				
 				return true;
 			}
-			
-			return false;
+			else
+			{
+				conn.getConnection().rollback();
+				return false;
+			}
 		}
 		catch (SQLException ex) 
 		{
@@ -140,7 +172,7 @@ public class PackagingDao {
 		}
 	}
 	
-	public boolean deletePack(Packaging pack) {
+	public static boolean deletePack(Packaging pack) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {

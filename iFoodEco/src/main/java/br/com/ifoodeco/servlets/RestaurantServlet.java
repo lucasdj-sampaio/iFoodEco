@@ -17,7 +17,6 @@ import br.com.ifoodeco.dao.RestaurantDao;
 public class RestaurantServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private RestaurantDao dao;
 	private Restaurant restaurant;
 	private List<Pix> pixList;
 	private List<Packaging> packList;
@@ -26,7 +25,6 @@ public class RestaurantServlet extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		  super.init();
-		  dao = new RestaurantDao();
 		  restaurant = new Restaurant();
 		  pixList = new ArrayList<Pix>();
 		  packList = new ArrayList<Packaging>();
@@ -41,7 +39,7 @@ public class RestaurantServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		Restaurant restaurant = 
-				dao.getRestaurant(Integer.parseInt(request.getHeader("restaurante").toString()));
+				RestaurantDao.getRestaurant(Integer.parseInt(request.getHeader("restaurante").toString()));
 		
 		//Enviar DADOS JSP
 	}
@@ -51,7 +49,7 @@ public class RestaurantServlet extends HttpServlet {
 		    
 	    setIntoRestaurant(request);
 		
-		dao.insertRestautantDao(restaurant);
+	    RestaurantDao.insertRestaurantDao(restaurant);
 	}
 	
 	private void setIntoRestaurant(HttpServletRequest request) {

@@ -8,15 +8,15 @@ import br.com.ifoodeco.entity.PayMethod;
 
 public class PayDao {
 
-	public static List<PayMethod> getAll(ConnectionManager conn, int cnpjNumber){
+	public static List<PayMethod> getAll(ConnectionManager conn, long cnpjNumber){
 		List<PayMethod> payList = new ArrayList<PayMethod>();
 		
 		try {
 			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT descricao "
-					+ "cd_relacao FROM T_PAG_RESTAURANTE PR INNER JOIN T_FORMA_PAG FP "
-					+ "WHERER PR.cd_pag = FP.cd_pag AND nr_cnpj = ?");
+					+ ", cd_relacao FROM T_PAG_RESTAURANTE PR, T_FORMA_PAG FP "
+					+ "WHERE PR.cd_pag = FP.cd_pag AND nr_cnpj = ?");
 			
-			getPayment.setInt(1, cnpjNumber);
+			getPayment.setLong(1, cnpjNumber);
 						
 			ResultSet result = conn.getData(getPayment);
 			
@@ -35,8 +35,40 @@ public class PayDao {
 		return payList;
 	}
 	
+	public static List<PayMethod> getAll(long cnpjNumber){
+		ConnectionManager conn = new ConnectionManager();
+		
+		List<PayMethod> payList = new ArrayList<PayMethod>();
+		
+		try {
+			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT descricao "
+					+ ", cd_relacao FROM T_PAG_RESTAURANTE PR, T_FORMA_PAG FP "
+					+ "WHERE PR.cd_pag = FP.cd_pag AND nr_cnpj = ?");
+			
+			getPayment.setLong(1, cnpjNumber);
+						
+			ResultSet result = conn.getData(getPayment);
+			
+			while (result.next()) {
+				PayMethod pay = new PayMethod(result.getString(1));
+				pay.setId(result.getInt(2));
+				
+				payList.add(pay);
+			}
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+		finally {
+			conn.closeConnection();
+		}
+		
+		return payList;
+	}
+	
 	//Get All pay methods to show on JSP
-	public List<PayMethod> getAll(){
+	public static List<PayMethod> getAll(){
 		ConnectionManager conn = new ConnectionManager();
 		
 		List<PayMethod> payList = new ArrayList<PayMethod>();
@@ -63,7 +95,7 @@ public class PayDao {
 	}
 	
 	public static boolean insertPay(ConnectionManager conn, List<PayMethod> paymentList
-			, int cnpjNumber) {
+			, long cnpjNumber) {
 		try {
 			for (PayMethod payment : paymentList) {
 				
@@ -71,7 +103,7 @@ public class PayDao {
 						+ "T_PAG_RESTAURANTE VALUES (PAG.Nextval, ?, ?)");
 				
 				payInsert.setString(1, getPaymentKey(conn, payment.getPayMethod()));
-				payInsert.setInt(2, cnpjNumber);
+				payInsert.setLong(2, cnpjNumber);
 
 				conn.executeCommand(payInsert, false);
 			}
@@ -89,7 +121,7 @@ public class PayDao {
 		try {
 			
 			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_pag "
-					+ "FROM T_FORMA_PAG WHERER descricao = ?");
+					+ "FROM T_FORMA_PAG WHERE descricao = ?");
 			
 			getId.setString(1, payKey);
 						
@@ -108,12 +140,11 @@ public class PayDao {
 		}
 	}
 	
-	public boolean updatePay(PayMethod pay) {
+	public static boolean updatePay(PayMethod pay) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {
-			
-			PreparedStatement payUpdate = conn.getConnection().prepareStatement("UPDATE T_PAG_RESTAURANTE"
+			PreparedStatement payUpdate = conn.getConnection().prepareStatement("UPDATE T_PAG_RESTAURANTE "
 						+ "SET CD_PAG = ? WHERE CD_RELACAO = ?");
 				
 			payUpdate.setString(1, getPaymentKey(conn, pay.getPayMethod()));
@@ -124,8 +155,10 @@ public class PayDao {
 				
 				return true;
 			}
-			
-			return false;
+			else{
+				conn.getConnection().rollback();
+				return false;
+			}
 		}
 		catch (SQLException ex) 
 		{
@@ -137,7 +170,7 @@ public class PayDao {
 		}
 	}
 	
-	public boolean deletePay(PayMethod pay) {
+	public static boolean deletePay(PayMethod pay) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {

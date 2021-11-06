@@ -7,7 +7,7 @@ import br.com.ifoodeco.entity.Restaurant;
 
 public class RestaurantDao {
 	
-	public Restaurant getRestaurant(int cnpjNumber) {
+	public static Restaurant getRestaurant(long cnpjNumber) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		Restaurant restaurant = new Restaurant();
@@ -16,11 +16,11 @@ public class RestaurantDao {
 		try {
 			PreparedStatement getRestaurant = conn.getConnection().prepareStatement("SELECT nm_plano, "
 					+ "nm_categoria, nm_restaurante, nr_telefone, ent_agendada, email, nr_agencia, "
-					+ "nr_conta FROM T_CADASTRO CD INNER JOIN T_PLANO P INNER JOIN T_CATEGORIA C "
-					+ "WHERE CD.cd_planp = P.cd_plano "
-					+ "AND CD.cd_categoria = C.cd_categoria nr_cnpj = ?");
+					+ "nr_conta FROM T_CADASTRO CD, T_PLANO P, T_CATEGORIA C "
+					+ "WHERE CD.cd_plano = P.cd_plano "
+					+ "AND CD.cd_categoria = C.cd_categoria AND nr_cnpj = ?");
 			
-			getRestaurant.setInt(1, cnpjNumber);
+			getRestaurant.setLong(1, cnpjNumber);
 						
 			ResultSet result = conn.getData(getRestaurant);
 			
@@ -28,7 +28,7 @@ public class RestaurantDao {
 			    restaurant.setPlan(result.getString(1));
 			    restaurant.setCategory(result.getString(2));
 				restaurant.setName(result.getString(3));
-			    restaurant.setNumber(result.getInt(4));
+			    restaurant.setNumber(result.getLong(4));
 			    restaurant.setScheduledDelivery(result.getBoolean(5));
 			    restaurant.setEmailAddress(result.getString(6));
 			    restaurant.setAgencyNumber(result.getInt(7));
@@ -55,11 +55,11 @@ public class RestaurantDao {
 		return null;
 	}
 	
-	public boolean insertRestautantDao(Restaurant restaurant) {
+	public static boolean insertRestaurantDao(Restaurant restaurant) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {	
-			if (AddressDao.insertAddress(conn, restaurant.getAddress())) {
+			if (!AddressDao.insertAddress(conn, restaurant.getAddress())) {
 				conn.getConnection().rollback();
 				return false;
 			}
@@ -69,26 +69,28 @@ public class RestaurantDao {
 				return false;
 			}
 			
-			if (PixDao.insertPix(conn, restaurant.getPixList()
+			if (!PixDao.insertPix(conn, restaurant.getPixList()
 					, restaurant.getCnpjNumber())) {
 				conn.getConnection().rollback();
 				return false;
 			}
 			
-			if (PackagingDao.insertPack(conn, restaurant.getPackList()
+			if (!PackagingDao.insertPack(conn, restaurant.getPackList()
 					, restaurant.getCnpjNumber())) {
 				conn.getConnection().rollback();
 				return false;
 			}
 			
-			if (PayDao.insertPay(conn, restaurant.getPayList()
+			if (!PayDao.insertPay(conn, restaurant.getPayList()
 					, restaurant.getCnpjNumber())) {
 				conn.getConnection().rollback();
 				return false;
 			}
-			
-			conn.getConnection().commit();
-			return true;
+			else
+			{
+				conn.getConnection().commit();
+				return true;
+			}			
 		}
 		catch (SQLException ex) 
 		{
@@ -100,18 +102,18 @@ public class RestaurantDao {
 		}
 	}
 	
-	private boolean insertRestaurant(ConnectionManager conn, Restaurant restaurant) {
+	private static boolean insertRestaurant(ConnectionManager conn, Restaurant restaurant) {
 		try {
 			
 			PreparedStatement restaurantInsert = conn.getConnection().prepareStatement("INSERT INTO "
-					+ "T_CADASTRO VALUES (?, (SELECT MAX(cd_endereco FROM T_ENDERECO)), "
+					+ "T_CADASTRO VALUES (?, (SELECT MAX(cd_endereco) FROM T_ENDERECO), "
 					+ "?, ?, ?, ?, ?, ?, ?, ?)");
 			
-			restaurantInsert.setInt(1, restaurant.getCnpjNumber());
+			restaurantInsert.setLong(1, restaurant.getCnpjNumber());
 			restaurantInsert.setInt(2, getPlanId(conn, restaurant.getPlan()));
 			restaurantInsert.setInt(3, getCategoryId(conn, restaurant.getCategory()));
 			restaurantInsert.setString(4, restaurant.getName());
-			restaurantInsert.setInt(5, restaurant.getNumber());
+			restaurantInsert.setLong(5, restaurant.getNumber());
 			restaurantInsert.setBoolean(6, restaurant.isScheduledDelivery());
 			restaurantInsert.setString(7, restaurant.getEmailAddress());
 			restaurantInsert.setInt(8, restaurant.getAgencyNumber());
@@ -131,13 +133,13 @@ public class RestaurantDao {
 		}	
 	}
 	
-	private int getPlanId(ConnectionManager conn, String plainName) {
+	private static int getPlanId(ConnectionManager conn, String planName) {
 		try {
 			
 			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_plano "
-					+ "FROM T_PLANO WHERER = ?");
+					+ "FROM T_PLANO WHERE nm_plano = ?");
 			
-			getId.setString(1, plainName);
+			getId.setString(1, planName);
 						
 			ResultSet result = conn.getData(getId);
 			
@@ -154,11 +156,11 @@ public class RestaurantDao {
 		}
 	}
 	
-	private int getCategoryId(ConnectionManager conn, String categoryName) {
+	private static int getCategoryId(ConnectionManager conn, String categoryName) {
 		try {
 			
 			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_categoria "
-					+ "FROM T_CATEGORIA WHERER nm_categoria = ?");
+					+ "FROM T_CATEGORIA WHERE nm_categoria = ?");
 			
 			getId.setString(1, categoryName);
 						
@@ -177,7 +179,7 @@ public class RestaurantDao {
 		}
 	}
 	
-	public boolean updateRestaurant(Restaurant restaurant) {
+	public static boolean updateRestaurant(Restaurant restaurant) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {		
@@ -189,15 +191,13 @@ public class RestaurantDao {
 			restaurantUpdate.setInt(1, getPlanId(conn, restaurant.getPlan()));
 			restaurantUpdate.setInt(2, getCategoryId(conn, restaurant.getCategory()));
 			restaurantUpdate.setString(3, restaurant.getName());
-			restaurantUpdate.setInt(4, restaurant.getNumber());
+			restaurantUpdate.setLong(4, restaurant.getNumber());
 			restaurantUpdate.setBoolean(5, restaurant.isScheduledDelivery());
 			restaurantUpdate.setString(6, restaurant.getEmailAddress());
 			restaurantUpdate.setInt(7, restaurant.getAgencyNumber());
 			restaurantUpdate.setInt(8, restaurant.getAccountNumber());
-			restaurantUpdate.setInt(9, restaurant.getCnpjNumber());
-			
-			restaurantUpdate.executeUpdate();
-						
+			restaurantUpdate.setLong(9, restaurant.getCnpjNumber());
+								
 			if (conn.executeCommand(restaurantUpdate, false) == 1) 
 			{
 				conn.getConnection().commit();

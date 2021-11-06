@@ -12,7 +12,6 @@ public class ConnectionManager {
 	public ConnectionManager() {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			connection.setAutoCommit(false);
 		}
 		catch (Exception ex) 
 		{
@@ -23,6 +22,7 @@ public class ConnectionManager {
 	public Connection getConnection() {
 		if	(connection == null) {
 			openConnection();
+			setCommit();
 		}
 		
 		return this.connection;
@@ -30,7 +30,17 @@ public class ConnectionManager {
 	
 	private void openConnection() {
 		try {
-			this.connection = DriverManager.getConnection("jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl", "RM88770", "fiap21");
+			this.connection = DriverManager.getConnection("jdbc:oracle:thin:@oracle.fiap.com.br:1521:orcl", "RM87361", "110700");
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+		}
+	}
+	
+	private void setCommit() {
+		try {
+			this.connection.setAutoCommit(false);
 		}
 		catch (SQLException ex) 
 		{
