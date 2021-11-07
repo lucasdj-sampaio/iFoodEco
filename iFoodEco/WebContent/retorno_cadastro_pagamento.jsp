@@ -113,25 +113,25 @@
 
                     <fieldset>
                         <div>                           
-                        <label><input type="radio" name="pagamento1"style="margin: 10px 2px;">Ifood Online</label>
+                        <label><input type="checkbox" name="pagamento1"style="margin: 10px 2px;">Ifood Online</label>
                         </div>  
                         <div>           
-                        <label><input type="radio" name="pagamento2"style="margin: 10px 2px;">AMEX</label>   
+                        <label><input type="checkbox" name="pagamento2"style="margin: 10px 2px;">AMEX</label>   
                         </div> 
                         <div> 
-                        <label><input type="radio" name="pagamento3"style="margin: 10px 2px;">Mastercard</label>
+                        <label><input type="checkbox" name="pagamento3"style="margin: 10px 2px;">Mastercard</label>
                         </div>
                         <div>
-                        <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Elo</label>
+                        <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Elo</label>
                         </div>
                         <div>
-                        <label><input type="radio" name="pagamento5"style="margin: 10px 2px;">Visa</label>
+                        <label><input type="checkbox" name="pagamento5"style="margin: 10px 2px;">Visa</label>
                         </div>                      
                         <div>               
-                        <label><input type="radio" name="pagamento6"style="margin: 10px 2px;">PayPal</label>
+                        <label><input type="checkbox" name="pagamento6"style="margin: 10px 2px;">PayPal</label>
                         </div> 
                         <div>
-                        <label><input type="radio" name="pagamento7"style="margin: 10px 2px;">Vale alelo</label>
+                        <label><input type="checkbox" name="pagamento7"style="margin: 10px 2px;">Vale alelo</label>
                         </div>                      
                     <fieldset>
 
