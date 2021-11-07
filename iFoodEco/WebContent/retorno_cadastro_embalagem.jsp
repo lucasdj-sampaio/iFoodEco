@@ -7,9 +7,9 @@
 
     <body>
 
-        <div class="embalagens_cadastradas" style="display: inline-flex; margin: 30px 400px;" >
+        <div class="embalagens_cadastradas" style="margin: 30px 400px;" >
             <h1 class="titulo-principal-recadastro">Embalagens Cadastradas</h1>
-            <h2 class="editar"><img src="Imagem/editar.png" width="20px" style="margin: 0 10px"></h2>                 
+            <h2 class="editar"><img src="Imagem/editar.png" width="20px" style="margin: 20px 0"></h2>                 
         </div>  
         
         <div class="faixa-indice">
