@@ -18,11 +18,11 @@ public class HomeServlet extends HttpServlet {
 		
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	HttpSession session = request.getSession();
+    	HttpSession session = request.getSession(true);
     	
-    	session.setAttribute("userName", request.getAttribute("nome"));
-    	session.setAttribute("mailAddress", request.getAttribute("email"));
-    	session.setAttribute("phone", request.getAttribute("telefone"));
+    	session.setAttribute("userName", request.getParameter("nome"));
+    	session.setAttribute("mailAddress", request.getParameter("email"));
+    	session.setAttribute("phone", request.getParameter("telefone"));
     	
     	RequestDispatcher rd = request.getRequestDispatcher("cadastro_endereco.jsp");
     	rd.forward(request, response);

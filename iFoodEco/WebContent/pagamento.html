@@ -3,15 +3,17 @@
  	<head>
         <meta charset="UTF-8">
         <title>Ifood para Parceiros</title>  
-        <link rel="stylesheet" href="CSS/reset.css">      
-        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="styles/reset.css">      
+        <link rel="stylesheet" href="styles/style.css">
         <link rel="icon" href="Imagem/logo_aba.png">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
         <header>
+
+
         	<div class="cabeçalho" >
-            <h1 class="seta" ><img src="Imagem/seta2.png" alt="Voltar"></h1> 
+            <h1 class="seta" href="index.jsp"><a href="cadastro_proprietario.html"><img src="Imagem/seta2.png" alt="Voltar"></a></h1> 
             <h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>        
             </div>            
             <div class="faixa"></div>
@@ -48,6 +50,7 @@
 						<div>
 						<label><input type="radio" id="pix1" onClick="habilitacao()"  name="pagamento67"style="margin: 10px 2px;">PIX</label>
 						</div>
+                    </fieldset>
 
 
 					 <script language="javascript">
@@ -67,7 +70,7 @@
 
 
 					<fieldset id="opcao" onchange="displayPagamento(this.value)"> 
-						<label>Selecione as chaves para PIX:</label>
+						<label>Selecione as chaves:</label>
                         <label><input type="radio" value="cnpj" id="cnpj1" onchange="displayPagamento(this.value)" disabled=>CNPJ</label>
                         <label><input type="radio" value="email"  id="email1" onchange="displayPagamento(this.value)"disabled>E-mail</label>
                         <label><input type="radio" value="celular" id="celular1" onchange="displayPagamento(this.value)"disabled>Celular</label>                      

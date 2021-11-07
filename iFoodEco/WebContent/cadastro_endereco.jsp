@@ -4,8 +4,8 @@
  	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 		<title>Ifood para Parceiros</title>  
-		<link rel="stylesheet" href="CSS/reset.css">      
-		<link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="styles/reset.css">      
+        <link rel="stylesheet" href="styles/style.css">
 		<link rel="icon" href="Imagem/logo_aba.png">
 	</head>
 

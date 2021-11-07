@@ -4,19 +4,19 @@
  	<head>
         <title>Ifood para Parceiros</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
-        <link rel="stylesheet" href="CSS/reset.css">      
-        <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="styles/reset.css">      
+        <link rel="stylesheet" href="styles/style.css">
         <link rel="icon" href="Imagem/logo_aba.png">
     </head>
 
     <header class="faixa-dois" style="background-color: #ffffff">
-        <div class="caixa"style="display: inline-flex; ">        	
+        <div class="caixa" style="display: inline-flex;">        	
         <h1 class="logo_index" ><img src="Imagem/logo_ifood_maior.png" alt="Logo Ifood"></h1>                    
         </div>            
     </header>
 
     <body class="background">
-        <main class="cadastro">
+        <main class="cadastro" id="cadastro">
         	<div class="principal_cadastro">
                 <h1 class="titulo-principal-cadastro">Cadastre sua loja</h1>
                 <h3 class="subtitulo-cadastro" >Entre e ganhe 1 mês de mensalidade grátis!</h3>

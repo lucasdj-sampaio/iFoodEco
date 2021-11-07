@@ -1,11 +1,14 @@
 package br.com.ifoodeco.servlets;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import br.com.ifoodeco.entity.Address;
 
 @WebServlet(description = "Get address data from ifood html page", urlPatterns = { "/secundStep" })
 public class AddressServlet extends HttpServlet {
@@ -16,11 +19,16 @@ public class AddressServlet extends HttpServlet {
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-    	HttpSession session = request.getSession();
-						
-		String email = session.getAttribute("mailAddress").toString();
+		HttpSession session = request.getSession(true);
 		
-		String nome = request.getAttribute("nome").toString();
+		Address address = new Address(request.getParameter("logradouro").toString()
+				, Integer.parseInt(request.getParameter("cep"))
+				, Integer.parseInt(request.getParameter("numero"))
+				, request.getParameter("complemento"));
+		
+		session.setAttribute("address", address);
+		
+    	RequestDispatcher rd = request.getRequestDispatcher("cadastro_proprietario.jsp");
+    	rd.forward(request, response);
 	}
 }

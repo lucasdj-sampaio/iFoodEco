@@ -72,6 +72,8 @@ public class RestaurantServlet extends HttpServlet {
 				, Integer.parseInt(request.getAttribute("numero").toString())
 				, request.getAttribute("complemento").toString());
 		
+		//request.getSession(false).getAttribute("mailAddress").toString()
+		
 		boolean scheduler = request.getAttribute("agendamento").toString().toUpperCase() == "SIM" ? true : false;
 		
 	    restaurant.setCnpjNumber(Integer.parseInt(request.getAttribute("cnpj").toString()));
