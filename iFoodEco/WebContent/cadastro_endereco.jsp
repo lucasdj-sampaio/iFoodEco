@@ -23,7 +23,7 @@
 			<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 			<div class="formulario">
-				<form action="secundStep" method="post">
+				<form action="secondStep" method="post">
 					<label for="cep" style="font-size: 15px">CEP</label>
 					<input name="cep" id="cep" type="text" required style="width: 500px; height: 40px; font-size: 17px" />
 					<label for="uf"style="font-size: 15px; margin: 20px 0">Estado</label>

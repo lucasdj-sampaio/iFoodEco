@@ -7,36 +7,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import br.com.ifoodeco.entity.Address;
 import br.com.ifoodeco.entity.Restaurant;
 
-@WebServlet(description = "Get address data from ifood html page", urlPatterns = { "/secondStep" })
-public class AddressServlet extends HttpServlet {
+@WebServlet(description = "This servlet get store data from webPage", urlPatterns = { "/thirdStep" })
+public class StoreServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Restaurant restaurant;
        
-    public AddressServlet() {
+    public StoreServlet() {
         super();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession(true);
-		
-		Address address = new Address(request.getParameter("logradouro").toString()
-				, Integer.parseInt(request.getParameter("cep").replace("-", ""))
-				, Integer.parseInt(request.getParameter("numero"))
-				, request.getParameter("complemento"));
-		
+			
 		restaurant = (Restaurant)request.getSession(false).getAttribute("restaurant");	
-		
-		restaurant.setAddress(address);
+		restaurant.setName(request.getParameter("nomeLoja").toString());
+		restaurant.setCategory(request.getParameter("categoria").toString());
+		restaurant.setCnpjNumber(Long.parseLong(request.getParameter("cnpj").toString()
+				.replace("-", "")
+				.replace("/", "")
+				.replace(".", "")
+				.replace(" ", "").trim()));
+		restaurant.setAgencyNumber(Integer.parseInt(request.getParameter("agencia").toString()
+				.replace("-", "")
+				.replace(" ", "").trim()));
+		restaurant.setAccountNumber(Integer.parseInt(request.getParameter("conta")
+				.replace("-", "")
+				.replace(" ", "").trim()));
 		
 		session.removeAttribute("restaurant");
 		session.setAttribute("restaurant", restaurant);
 		
-    	RequestDispatcher rd = request.getRequestDispatcher("cadastro_proprietario.jsp");
+    	RequestDispatcher rd = request.getRequestDispatcher("pagamento.jsp");
     	rd.forward(request, response);
 	}
 }
