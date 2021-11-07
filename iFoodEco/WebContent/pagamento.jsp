@@ -10,15 +10,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
-        <header>
 
-
-        	<div class="cabeçalho" >
-            <h1 class="seta" href="index.jsp"><a href="cadastro_proprietario.html"><img src="Imagem/seta2.png" alt="Voltar"></a></h1> 
-            <h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>        
-            </div>            
-            <div class="faixa"></div>
-        </header>
+       <%@ include file="directiva.jsp" %>
+       
         <main class="main_formato">
         	<div class="principal_pagamento">
 					<h1 class="titulo-principal">Forma de pagamento</h1>
