@@ -22,7 +22,7 @@ public class AddressServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		Address address = new Address(request.getParameter("logradouro").toString()
-				, Integer.parseInt(request.getParameter("cep"))
+				, Integer.parseInt(request.getParameter("cep").replace("-", ""))
 				, Integer.parseInt(request.getParameter("numero"))
 				, request.getParameter("complemento"));
 		
