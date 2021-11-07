@@ -217,3 +217,8 @@ form label{
     cursor: pointer;
     width: 20px; 
 }
+
+.divPix{
+    height: 20%;
+    margin: 5px;
+}
