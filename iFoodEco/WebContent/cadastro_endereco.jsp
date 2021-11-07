@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="pt-br"> 	
- 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
-		<title>Ifood para Parceiros</title>  
-        <link rel="stylesheet" href="styles/reset.css">      
-        <link rel="stylesheet" href="styles/style.css">
-		<link rel="icon" href="Imagem/logo_aba.png">
+	
+	<head>
+		<%@ include file="directiva.jsp" %>
 	</head>
 
 	<body>
-		
-		<%@ include file="directiva.jsp" %>
+	
+		<header>
+	    	<div class="cabeçalho" >
+					<h1 class="seta"><a href="index.jsp"><img src="Imagem/seta2.png" alt="Voltar"></a></h1>
+	        <h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>        
+	    	</div>            
+	    	<div class="faixa"></div>
+		</header>
 
 		<main class="main_formato">
 			<div class="principal">

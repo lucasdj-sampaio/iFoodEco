@@ -2,11 +2,7 @@
 <!doctype html>
 <html lang="pt-br"> 	
  	<head>
-        <title>Ifood para Parceiros</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
-        <link rel="stylesheet" href="styles/reset.css">      
-        <link rel="stylesheet" href="styles/style.css">
-        <link rel="icon" href="Imagem/logo_aba.png">
+        <%@ include file="directiva.jsp" %>
     </head>
 
     <header class="faixa-dois" style="background-color: #ffffff">
