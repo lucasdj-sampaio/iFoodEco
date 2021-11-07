@@ -212,3 +212,8 @@ form label{
 .excluir{
     cursor: pointer;
 }
+
+#botao_excluir{
+    cursor: pointer;
+    width: 20px; 
+}
