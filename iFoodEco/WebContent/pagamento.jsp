@@ -92,17 +92,17 @@
 
                     
                         <div id="cnpjPagamento" style="display:none;"><br/>
-                            <input type="text" placeholder="000.000.000-00" />                      
+                            <input type="text" class="caixa_input" placeholder="000.000.000-00" />                      
                             <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir1')">
                         </div>
 
                         <div id="emailPagamento" style="display:none;"><br/>
-                            <input type="text" placeholder="email@email.com" />
+                            <input type="text" class="caixa_input" placeholder="email@email.com" />
                             <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir2')">      
                         </div>
 
                         <div id="celularPagamento" style="display:none;"><br/>
-                            <input type="text" placeholder="(00)00000-0000" />
+                            <input type="text" class="caixa_input" placeholder="(00)00000-0000" />
                             <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir3')">   
                         </div> 
                              
