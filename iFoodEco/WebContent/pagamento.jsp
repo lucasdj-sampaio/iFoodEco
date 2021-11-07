@@ -22,42 +22,42 @@
 			</div>
 
 			<div class="container" style="display: flex;">
-                <form action="">
+                <form action="fourthStep" method="get">
 				    <div class="container-1" style="width: 500px">
 					    <fieldset>
                             <div>                   		
                                 <label>
-                                    <input type="checkbox" name="pagamento1"style="margin: 10px 2px;">Ifood Online
+                                    <input type="checkbox" name="pagamento"style="margin: 10px 2px;">Ifood Online
                                 </label>
                             </div>  
                             <div>           
                                 <label>
-                                    <input type="checkbox" name="pagamento2"style="margin: 10px 2px;">AMEX
+                                    <input type="checkbox" name="pagamento"style="margin: 10px 2px;">AMEX
                                 </label>   
                             </div> 
                             <div> 
                                 <label>
-                                    <input type="checkbox" name="pagamento3"style="margin: 10px 2px;">Mastercard
+                                    <input type="checkbox" name="pagamento"style="margin: 10px 2px;">Mastercard
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Elo
+                                    <input type="checkbox" name="pagamento"style="margin: 10px 2px;">Elo
                                 </label>
                             </div>
                             <div>
                                 <label>
-                                    <input type="checkbox" name="pagamento5"style="margin: 10px 2px;">Visa
+                                    <input type="checkbox" name="pagamento"style="margin: 10px 2px;">Visa
                                 </label>
                             </div>	                    
                             <div>              	
                                 <label>
-                                    <input type="checkbox" name="pagamento6"style="margin: 10px 2px;">PayPal
+                                    <input type="checkbox" name="pagamento"style="margin: 10px 2px;">PayPal
                                 </label>
                             </div> 
                             <div>
                                 <label>
-                                    <input type="checkbox" name="pagamento7"style="margin: 10px 2px;">Vale alelo
+                                    <input type="checkbox" name="pagamento"style="margin: 10px 2px;">Vale alelo
                                 </label>
                             </div> 	                    
                             <div>
@@ -106,7 +106,6 @@
                             <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir3')">   
                         </div> 
                              
-
                         <script>
                             function clicar(answer) {
                                 if (answer == "selecione") { // hide the div that is not selected
