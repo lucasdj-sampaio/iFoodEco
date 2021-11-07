@@ -31,6 +31,18 @@
                 </div>
             </div>
             <div>
+                <div class="indice9" style="display: inline-flex;margin: 10px">
+                    <h1><img src="Imagem/9-vermelho.png"width="20px" style="margin: 0 10px;"></h1> 
+                    <h3 style="color: #ea1d2c;" >Formas de pagamento</h3>
+                </div>
+            </div>
+            <div>
+                <div class="indice12" style="display: inline-flex;margin: 10px">
+                    <h1><img src="Imagem/12.png"width="15px" style="margin: 0 12px;"></h1> 
+                    <h3>Embalagens</h3>
+                </div>
+            </div>
+            <div>
                 <div class="indice3" style="display: inline-flex;margin: 10px">
                     <h1><img src="Imagem/3.png"width="20px" style="margin: 0 10px;"></h1> 
                     <h3>Avaliações</h3>
@@ -65,13 +77,7 @@
                     <h1><img src="Imagem/8.png"width="15px" style="margin: 0 12px;"></h1> 
                     <h3>Areas de entrega</h3>
                 </div>
-            </div>
-            <div>
-                <div class="indice9" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/9-vermelho.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3 style="color: #ea1d2c;" >Formas de pagamento</h3>
-                </div>
-            </div>
+            </div>            
             <div>
                 <div class="indice10" style="display: inline-flex;margin: 10px">
                     <h1><img src="Imagem/10.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -83,13 +89,7 @@
                     <h1><img src="Imagem/11.png"width="20px" style="margin: 0 10px;"></h1> 
                     <h3>Promoções</h3>
                 </div>
-            </div>
-            <div>
-                <div class="indice12" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/12.png"width="15px" style="margin: 0 12px;"></h1> 
-                    <h3>Embalagens</h3>
-                </div>
-            </div>
+            </div>            
             <div>
                 <div class="indice13" style="display: inline-flex;margin: 10px">
                     <h1><img src="Imagem/13.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -113,25 +113,25 @@
 
                     <fieldset>
                         <div>                           
-                        <label><input type="radio" name="pagamento1"style="margin: 10px 2px;">Ifood Online</label>
+                        <label><input type="checkbox" name="pagamento1"style="margin: 10px 2px;">Ifood Online</label>
                         </div>  
                         <div>           
-                        <label><input type="radio" name="pagamento2"style="margin: 10px 2px;">AMEX</label>   
+                        <label><input type="checkbox" name="pagamento2"style="margin: 10px 2px;">AMEX</label>   
                         </div> 
                         <div> 
-                        <label><input type="radio" name="pagamento3"style="margin: 10px 2px;">Mastercard</label>
+                        <label><input type="checkbox" name="pagamento3"style="margin: 10px 2px;">Mastercard</label>
                         </div>
                         <div>
-                        <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Elo</label>
+                        <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Elo</label>
                         </div>
                         <div>
-                        <label><input type="radio" name="pagamento5"style="margin: 10px 2px;">Visa</label>
+                        <label><input type="checkbox" name="pagamento5"style="margin: 10px 2px;">Visa</label>
                         </div>                      
                         <div>               
-                        <label><input type="radio" name="pagamento6"style="margin: 10px 2px;">PayPal</label>
+                        <label><input type="checkbox" name="pagamento6"style="margin: 10px 2px;">PayPal</label>
                         </div> 
                         <div>
-                        <label><input type="radio" name="pagamento7"style="margin: 10px 2px;">Vale alelo</label>
+                        <label><input type="checkbox" name="pagamento7"style="margin: 10px 2px;">Vale alelo</label>
                         </div>                      
                     <fieldset>
 

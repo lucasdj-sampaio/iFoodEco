@@ -31,6 +31,18 @@
                         <h3 class="indice2">Perfil</h3>
                     </div>
                 </div>
+                 <div>
+                    <div class="indice9" style="display: inline-flex;margin: 10px">
+                        <h1><img src="Imagem/9.png"width="20px" style="margin: 0 10px;"></h1> 
+                        <h3 class="indice9">Formas de pagamento</h3>
+                    </div>
+                </div>
+                <div>
+                    <div class="indice12" style="display: inline-flex;margin: 10px">
+                        <h1><img src="Imagem/12-vermelho.png"width="15px" style="margin: 0 12px;"></h1> 
+                        <h3 class="indice12"style="color: #ea1d2c;">Embalagens</h3>
+                    </div>
+                </div>
                 <div>
                     <div class="indice3" style="display: inline-flex;margin: 10px">
                         <h1><img src="Imagem/3.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -66,13 +78,7 @@
                         <h1><img src="Imagem/8.png"width="15px" style="margin: 0 12px;"></h1> 
                         <h3>Areas de entrega</h3>
                     </div>
-                </div>
-                <div>
-                    <div class="indice9" style="display: inline-flex;margin: 10px">
-                        <h1><img src="Imagem/9.png"width="20px" style="margin: 0 10px;"></h1> 
-                        <h3 class="indice9">Formas de pagamento</h3>
-                    </div>
-                </div>
+                </div>               
                 <div>
                     <div class="indice10" style="display: inline-flex;margin: 10px">
                         <h1><img src="Imagem/10.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -84,13 +90,7 @@
                         <h1><img src="Imagem/11.png"width="20px" style="margin: 0 10px;"></h1> 
                         <h3>Promoções</h3>
                     </div>
-                </div>
-                <div>
-                    <div class="indice12" style="display: inline-flex;margin: 10px">
-                        <h1><img src="Imagem/12-vermelho.png"width="15px" style="margin: 0 12px;"></h1> 
-                        <h3 class="indice12"style="color: #ea1d2c;">Embalagens</h3>
-                    </div>
-                </div>
+                </div>                
                 <div>
                     <div class="indice13" style="display: inline-flex;margin: 10px">
                         <h1><img src="Imagem/13.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -113,28 +113,28 @@
             <main class="main_formato_recadastro">
 
                 <div>
-                    <label><input type="radio" name="pagamento1"style="margin: 10px 2px;">Embalagem de vidro</label>  
+                    <label><input type="checkbox" name="pagamento1"style="margin: 10px 2px;">Embalagem de vidro</label>  
                 </div>
                 <div>
-                    <label><input type="radio" name="pagamento2" style="margin: 10px 2px;">Embalagem de aluminio</label> 
+                    <label><input type="checkbox" name="pagamento2" style="margin: 10px 2px;">Embalagem de aluminio</label> 
                 </div>
                 <div>
-                    <label><input type="radio" name="pagamento3"style="margin: 10px 2px;">Embalagem de isopor</label> 
+                    <label><input type="checkbox" name="pagamento3"style="margin: 10px 2px;">Embalagem de isopor</label> 
                 </div>
                 <div>                        
-                    <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Embalagem de plástico</label>
+                    <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Embalagem de plástico</label>
                 </div>
                 <div>
-                    <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Embalagem de papel</label>
+                    <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Embalagem de papel</label>
                 </div>
                 <div>
-                    <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Talher de plástico</label>
+                    <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Talher de plástico</label>
                 </div>
                 <div>
-                    <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Canudo de plástico</label>
+                    <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Canudo de plástico</label>
                 </div>
                 <div>
-                    <label><input type="radio" name="pagamento5"style="margin: 10px 2px;">Outros</label>
+                    <label><input type="checkbox" name="pagamento5"style="margin: 10px 2px;">Outros</label>
                 </div>
             </main>
         </body>

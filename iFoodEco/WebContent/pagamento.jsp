@@ -10,15 +10,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
-        <header>
 
-
-        	<div class="cabeçalho" >
-            <h1 class="seta" href="index.jsp"><a href="cadastro_proprietario.html"><img src="Imagem/seta2.png" alt="Voltar"></a></h1> 
-            <h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>        
-            </div>            
-            <div class="faixa"></div>
-        </header>
+       <%@ include file="directiva.jsp" %>
+       
         <main class="main_formato">
         	<div class="principal_pagamento">
 					<h1 class="titulo-principal">Forma de pagamento</h1>
@@ -28,28 +22,28 @@
 				<div class="container-1" style="width: 500px">
 					<fieldset>
 	                   	<div>                   		
-	                    <label><input type="radio" name="pagamento1"style="margin: 10px 2px;">Ifood Online</label>
+	                    <label><input type="checkbox" name="pagamento1"style="margin: 10px 2px;">Ifood Online</label>
 	                    </div>  
 	                    <div>           
-	                    <label><input type="radio" name="pagamento2"style="margin: 10px 2px;">AMEX</label>   
+	                    <label><input type="checkbox" name="pagamento2"style="margin: 10px 2px;">AMEX</label>   
 	                    </div> 
 	                    <div> 
-	                    <label><input type="radio" name="pagamento3"style="margin: 10px 2px;">Mastercard</label>
+	                    <label><input type="checkbox" name="pagamento3"style="margin: 10px 2px;">Mastercard</label>
 	                	</div>
 	                	<div>
-	                    <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Elo</label>
+	                    <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Elo</label>
 	                    </div>
 	                    <div>
-	                    <label><input type="radio" name="pagamento5"style="margin: 10px 2px;">Visa</label>
+	                    <label><input type="checkbox" name="pagamento5"style="margin: 10px 2px;">Visa</label>
 	                    </div>	                    
 	                	<div>              	
-	                    <label><input type="radio" name="pagamento6"style="margin: 10px 2px;">PayPal</label>
+	                    <label><input type="checkbox" name="pagamento6"style="margin: 10px 2px;">PayPal</label>
 	                    </div> 
 	                    <div>
-	                    <label><input type="radio" name="pagamento7"style="margin: 10px 2px;">Vale alelo</label>
+	                    <label><input type="checkbox" name="pagamento7"style="margin: 10px 2px;">Vale alelo</label>
 	                    </div> 	                    
 						<div>
-						<label><input type="radio" id="pix1" onClick="habilitacao()"  name="pagamento67"style="margin: 10px 2px;">PIX</label>
+						<label><input type="checkbox" id="pix1" onClick="habilitacao()"  name="pagamento67"style="margin: 10px 2px;">PIX</label>
 						</div>
                     </fieldset>
 

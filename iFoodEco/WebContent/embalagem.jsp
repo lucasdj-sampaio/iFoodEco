@@ -10,13 +10,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     </head>
     <body>
-        <header>
-            <div class="cabeçalho" >
-            <h1 class="seta" href="index.html"><a href="planos.html"><img src="Imagem/seta2.png" alt="Voltar"></a></h1> 
-            <h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>        
-            </div>
-            <div class="faixa"></div>
-        </header>
+
+        <%@ include file="directiva.jsp" %>
+        
         <main class="main_formato">
 
             <div class="principal_pagamento">
@@ -38,28 +34,28 @@
             <div class="container" style="display: flex;">
                 <div class="container-1" style="width: 500px;">
                         <div>
-                            <label><input type="radio" name="pagamento1"style="margin: 10px 2px;">Embalagem de vidro</label>  
+                            <label><input type="checkbox" name="pagamento1"style="margin: 10px 2px;">Embalagem de vidro</label>  
                         </div>
                         <div>
-                            <label><input type="radio" name="pagamento2" style="margin: 10px 2px;">Embalagem de aluminio</label> 
+                            <label><input type="checkbox" name="pagamento2" style="margin: 10px 2px;">Embalagem de aluminio</label> 
                         </div>
                         <div>
-                            <label><input type="radio" name="pagamento3"style="margin: 10px 2px;">Embalagem de isopor</label> 
+                            <label><input type="checkbox" name="pagamento3"style="margin: 10px 2px;">Embalagem de isopor</label> 
                         </div>
                         <div>                        
-                            <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Embalagem de plástico</label>
+                            <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Embalagem de plástico</label>
                         </div>
                         <div>
-                            <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Embalagem de papel</label>
+                            <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Embalagem de papel</label>
                         </div>
                         <div>
-                            <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Talher de plástico</label>
+                            <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Talher de plástico</label>
                         </div>
                         <div>
-                            <label><input type="radio" name="pagamento4"style="margin: 10px 2px;">Canudo de plástico</label>
+                            <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Canudo de plástico</label>
                         </div>
                         <div>
-                            <label><input type="radio" name="pagamento5"style="margin: 10px 2px;">Outros</label>
+                            <label><input type="checkbox" name="pagamento5"style="margin: 10px 2px;">Outros</label>
                         <div>                     
 
                         <input type="submit" value="CADASTRAR" class="enviar">                    
