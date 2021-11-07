@@ -6,30 +6,29 @@
     </head>    
 
     <body>
+
         <div class="dados_cadastradas" style="margin: 30px 400px;" >
-            <h1 class="titulo-principal-recadastro">Perfil cadastrado</h1>      
-            <h2 class="editar"><img src="Imagem/editar.png" width="20px" style="margin: 20px 0"></h2> 
-        </div> 
+            <h1 class="titulo-principal-recadastro">Formas de pagamento cadastrados</h1>
+        </div>         
 
         <div class="faixa-indice">
-           <h1 class="logo" style="margin: 10px 70px; "><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1> 
+           <h1 class="logo" style="margin: 10px 70px; " ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1> 
            <div>
                 <div class="indice1" style="display: inline-flex;margin: 10px">
                     <h1 ><img src="Imagem/1.png" width="20px" style="margin: 0 10px;"></h1>             
                     <h3>Inicio</h3> 
                 </div>
             </div>
-
             <div>
                 <div class="indice2" style="display: inline-flex; margin: 10px;">
-                    <h1><img src="Imagem/2-vermelho.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3 style="color: #ea1d2c;">Perfil</h3>
+                    <h1><img src="Imagem/2.png"width="20px" style="margin: 0 10px;"></h1> 
+                    <h3>Perfil</h3>
                 </div>
             </div>
             <div>
                 <div class="indice9" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/9.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3 >Formas de pagamento</h3>
+                    <h1><img src="Imagem/9-vermelho.png"width="20px" style="margin: 0 10px;"></h1> 
+                    <h3 style="color: #ea1d2c;" >Formas de pagamento</h3>
                 </div>
             </div>
             <div>
@@ -73,7 +72,7 @@
                     <h1><img src="Imagem/8.png"width="15px" style="margin: 0 12px;"></h1> 
                     <h3>Areas de entrega</h3>
                 </div>
-            </div>           
+            </div>            
             <div>
                 <div class="indice10" style="display: inline-flex;margin: 10px">
                     <h1><img src="Imagem/10.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -85,7 +84,7 @@
                     <h1><img src="Imagem/11.png"width="20px" style="margin: 0 10px;"></h1> 
                     <h3>Promoções</h3>
                 </div>
-            </div>           
+            </div>            
             <div>
                 <div class="indice13" style="display: inline-flex;margin: 10px">
                     <h1><img src="Imagem/13.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -107,82 +106,52 @@
         </div>
         <main class="main_formato_recadastro">
 
+            <fieldset>
+                <div>                           
+                    <label><input type="checkbox" name="pagamento1"style="margin: 10px 2px;">Ifood Online</label>
+                </div>  
+                <div>           
+                    <label><input type="checkbox" name="pagamento2"style="margin: 10px 2px;">AMEX</label>   
+                </div> 
+                <div> 
+                    <label><input type="checkbox" name="pagamento3"style="margin: 10px 2px;">Mastercard</label>
+                </div>
+                <div>
+                    <label><input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Elo</label>
+                </div>
+                <div>
+                    <label><input type="checkbox" name="pagamento5"style="margin: 10px 2px;">Visa</label>
+                </div>                      
+                <div>               
+                    <label><input type="checkbox" name="pagamento6"style="margin: 10px 2px;">PayPal</label>
+                </div> 
+                <div>
+                    <label><input type="checkbox" name="pagamento7"style="margin: 10px 2px;">Vale alelo</label>
+                </div>                      
+            </fieldset>
 
-             <div>
-                <label for="cnpj"style="font-size: 15px; ">CNPJ</label>
+            <h1 style="margin: 30px 0;">Chaves PIX Cadastrados Cadastradas</h1>
+            <div>
+                <label for="email-recadastro"style="font-size: 15px; margin: 20px 0">E-mail</label>
+            </div> 
+            <div style="display: inline-flex;">         
+                <input id="email-recadastro" type="text" placeholder=" ***Não há e-mail cadastrado***" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" />
             </div>
             <div>
-                <input id="cnpj-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
-            </div>
-            <div>
-                <label for="plano"style="font-size: 15px; ">Plano selecionado</label>
+                <label for="celular-recadastro"style="font-size: 15px; margin: 20px 0">Celular</label>           
             </div>
             <div style="display: inline-flex;">
-                <input id="plano-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" />
-            </div>
+                <input id="celular-recadastro" type="text" placeholder=" ***Não há celular cadastrado***" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
+            </div>                
             <div>
-                <label for="categoria"style="font-size: 15px;">Categora Selecionada</label>
-            </div>
-            <div>
-                <div style="display: inline-flex;">
-                    <input id="categoria-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
-                </div>
-            </div>
-            <div>
-                <label for="nome-restaurante"style="font-size: 15px; margin: 20px 0">Nome do restaurante</label>
-            </div>
-            <div>
-                <div style="display: inline-flex;">
-                    <input id="nome-restaurante-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" />
-                </div>
-            </div>
-            <div>
-                <label for="telefone"style="font-size: 15px; margin: 20px 0">Número de telefone</label>
-            </div>
-            <div>
-                <div style="display: inline-flex;">
-                    <input id="telefone-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" />
-                </div>
-            </div>
-            <div>
-                <label for="email"style="font-size: 15px; margin: 20px 0">E-mail</label>
+                <label for="cnpj-recadastro"style="font-size: 15px; margin: 20px 0">CNPJ</label>           
             </div>
             <div style="display: inline-flex;">
-                <input id="email-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" />
+                <input id="cnpj-recadastro" type="text" placeholder=" ***Não há CNPJ cadastrado***" required style="width: 500px; height: 40px; font-size: 17px;" />
             </div>
             <div>
-                <label for="endereco-selecao"style="font-size: 15px; margin: 20px 0">Endereço</label>
-            </div>
-            <div style="display: inline-flex;">
-                <input id="endereco-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
-            </div>
-            <div>
-                <label for="logradouro"style="font-size: 15px; margin: 20px 0">Logradouro</label>
-            </div>
-            <div style="display: inline-flex;">
-                <input id="logradouro-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" />
-            </div>
-            <div>
-                <label for="cep"style="font-size: 15px; margin: 20px 0">CEP</label>
-            </div>
-            <div style="display: inline-flex;">
-                <input id="cep-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" />
-            </div>
-            <div>
-                <label for="nr-logradouro"style="font-size: 15px; margin: 20px 0">Número do logradouro</label>
-            </div>
-            <div>
-                <div style="display: inline-flex;">
-                    <input id="nr-logradouro-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
-                </div>
-            </div>            
-            <label for="complemento"style="font-size: 15px; margin: 20px 0">Complemento</label>
-        </div>
-        <div>
-            <div style="display: inline-flex;">
-                <input id="complemento" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
-            </div>
-        </div>
+                <input type="submit" value="Atualizar" class="enviar">
+            </div>             
         </main>
     </body>
 </html>

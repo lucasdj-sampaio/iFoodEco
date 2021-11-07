@@ -7,9 +7,8 @@
 
     <body>
         <div class="dados_cadastradas" style="margin: 30px 400px;" >
-            <h1 class="titulo-principal-recadastro">Perfil cadastrado</h1>      
-            <h2 class="editar"><img src="Imagem/editar.png" width="20px" style="margin: 20px 0"></h2> 
-        </div> 
+            <h1 class="titulo-principal-recadastro">Perfil cadastrado</h1> 
+       </div> 
 
         <div class="faixa-indice">
            <h1 class="logo" style="margin: 10px 70px; "><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1> 
@@ -107,7 +106,6 @@
         </div>
         <main class="main_formato_recadastro">
 
-
              <div>
                 <label for="cnpj"style="font-size: 15px; ">CNPJ</label>
             </div>
@@ -176,13 +174,16 @@
                     <input id="nr-logradouro-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
                 </div>
             </div>            
-            <label for="complemento"style="font-size: 15px; margin: 20px 0">Complemento</label>
-        </div>
-        <div>
-            <div style="display: inline-flex;">
-                <input id="complemento" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
+                <label for="complemento"style="font-size: 15px; margin: 20px 0">Complemento</label>
             </div>
-        </div>
+            <div>
+                <div style="display: inline-flex;">
+                    <input id="complemento" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
+                </div>
+            </div>
+            <div>
+                <input type="submit" value="Atualizar" class="enviar">
+            </div>
         </main>
     </body>
 </html>

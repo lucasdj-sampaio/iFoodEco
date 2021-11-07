@@ -105,6 +105,7 @@
                                     <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir4')">   
                                 </div>
                             </div> 
+
                         </div>
                    
                         <input type="submit" value="Continuar" class="enviar">                
