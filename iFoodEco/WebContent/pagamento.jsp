@@ -85,24 +85,45 @@
 
                         <fieldset id="opcao" onchange="displayPagamento(this.value)"> 
                             <label>Selecione as chaves:</label>
-                            <label><input type="radio" value="cnpj" id="cnpj1" onchange="displayPagamento(this.value)" disabled>CNPJ</label>
+                            <label><input type="radio" value="cnpj" id="cnpj1" onchange="displayPagamento(this.value)" disabled=>CNPJ</label>
                             <label><input type="radio" value="email"  id="email1" onchange="displayPagamento(this.value)"disabled>E-mail</label>
                             <label><input type="radio" value="celular" id="celular1" onchange="displayPagamento(this.value)"disabled>Celular</label>                      
                         </fieldset>
+
                     
                         <div id="cnpjPagamento" style="display:none;"><br/>
-                            <input name="pixCnpj" type="text" placeholder="000.000.000-00" />
+                            <input type="text" placeholder="000.000.000-00" />                      
+                            <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir1')">
                         </div>
 
                         <div id="emailPagamento" style="display:none;"><br/>
-                            <input name="pixEmail"type="text" placeholder="email@email.com" />
+                            <input type="text" placeholder="email@email.com" />
+                            <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir2')">      
                         </div>
 
                         <div id="celularPagamento" style="display:none;"><br/>
-                            <input name="pixCelular" type="text" placeholder="(00)00000-0000" />
-                        </div>            
-
+                            <input type="text" placeholder="(00)00000-0000" />
+                            <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir3')">   
+                        </div> 
+                             
                         <script>
+                            function clicar(answer) {
+                                if (answer == "selecione") { // hide the div that is not selected
+                                    document.getElementById('selecionePagamento').style.display = "none";
+                                } else if (answer == "excluir1") {
+                                    document.getElementById('cnpjPagamento').style.display = "none";
+                                    document.getElementById("cnpj1").checked = false;
+                                } else if (answer == "excluir2") {
+                                    document.getElementById('emailPagamento').style.display = "none";
+                                    document.getElementById("email1").checked = false;
+                                } else if (answer == "excluir3") {
+                                    document.getElementById('celularPagamento').style.display = "none";
+                                    document.getElementById("celular1").checked = false;
+                                }
+                            }
+                        </script>
+
+                         <script>
                             function displayPagamento(answer) {
                                 if (answer == "selecione") { // hide the div that is not selected
                                     document.getElementById('selecionePagamento').style.display = "block";
@@ -116,8 +137,7 @@
                             }
                         </script>
 
-                        <input type="submit" value="Continuar" class="enviar">
-                
+                        <input type="submit" value="Continuar" class="enviar">                
                     </div>
                 </form>		
 			</div>
