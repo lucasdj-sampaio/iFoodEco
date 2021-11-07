@@ -31,6 +31,18 @@
                         <h3 class="indice2">Perfil</h3>
                     </div>
                 </div>
+                 <div>
+                    <div class="indice9" style="display: inline-flex;margin: 10px">
+                        <h1><img src="Imagem/9.png"width="20px" style="margin: 0 10px;"></h1> 
+                        <h3 class="indice9">Formas de pagamento</h3>
+                    </div>
+                </div>
+                <div>
+                    <div class="indice12" style="display: inline-flex;margin: 10px">
+                        <h1><img src="Imagem/12-vermelho.png"width="15px" style="margin: 0 12px;"></h1> 
+                        <h3 class="indice12"style="color: #ea1d2c;">Embalagens</h3>
+                    </div>
+                </div>
                 <div>
                     <div class="indice3" style="display: inline-flex;margin: 10px">
                         <h1><img src="Imagem/3.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -66,13 +78,7 @@
                         <h1><img src="Imagem/8.png"width="15px" style="margin: 0 12px;"></h1> 
                         <h3>Areas de entrega</h3>
                     </div>
-                </div>
-                <div>
-                    <div class="indice9" style="display: inline-flex;margin: 10px">
-                        <h1><img src="Imagem/9.png"width="20px" style="margin: 0 10px;"></h1> 
-                        <h3 class="indice9">Formas de pagamento</h3>
-                    </div>
-                </div>
+                </div>               
                 <div>
                     <div class="indice10" style="display: inline-flex;margin: 10px">
                         <h1><img src="Imagem/10.png"width="20px" style="margin: 0 10px;"></h1> 
@@ -84,13 +90,7 @@
                         <h1><img src="Imagem/11.png"width="20px" style="margin: 0 10px;"></h1> 
                         <h3>Promoções</h3>
                     </div>
-                </div>
-                <div>
-                    <div class="indice12" style="display: inline-flex;margin: 10px">
-                        <h1><img src="Imagem/12-vermelho.png"width="15px" style="margin: 0 12px;"></h1> 
-                        <h3 class="indice12"style="color: #ea1d2c;">Embalagens</h3>
-                    </div>
-                </div>
+                </div>                
                 <div>
                     <div class="indice13" style="display: inline-flex;margin: 10px">
                         <h1><img src="Imagem/13.png"width="20px" style="margin: 0 10px;"></h1> 
