@@ -12,7 +12,7 @@ public class PayDao {
 		List<PayMethod> payList = new ArrayList<PayMethod>();
 		
 		try {
-			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT descricao "
+			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT cd_pag "
 					+ ", cd_relacao FROM T_PAG_RESTAURANTE PR, T_FORMA_PAG FP "
 					+ "WHERE PR.cd_pag = FP.cd_pag AND nr_cnpj = ?");
 			
@@ -41,7 +41,7 @@ public class PayDao {
 		List<PayMethod> payList = new ArrayList<PayMethod>();
 		
 		try {
-			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT descricao "
+			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT cd_pag "
 					+ ", cd_relacao FROM T_PAG_RESTAURANTE PR, T_FORMA_PAG FP "
 					+ "WHERE PR.cd_pag = FP.cd_pag AND nr_cnpj = ?");
 			
@@ -102,7 +102,7 @@ public class PayDao {
 				PreparedStatement payInsert = conn.getConnection().prepareStatement("INSERT INTO "
 						+ "T_PAG_RESTAURANTE VALUES (PAG.Nextval, ?, ?)");
 				
-				payInsert.setString(1, getPaymentKey(conn, payment.getPayMethod()));
+				payInsert.setString(1, payment.getPayMethod());
 				payInsert.setLong(2, cnpjNumber);
 
 				conn.executeCommand(payInsert, false);
@@ -117,29 +117,6 @@ public class PayDao {
 		}
 	}
 	
-	private static String getPaymentKey(ConnectionManager conn, String payKey) {
-		try {
-			
-			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_pag "
-					+ "FROM T_FORMA_PAG WHERE descricao = ?");
-			
-			getId.setString(1, payKey);
-						
-			ResultSet result = conn.getData(getId);
-			
-			if (result.next()) {
-				return result.getString(1);
-			}
-			
-			return null;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return null;
-		}
-	}
-	
 	public static boolean updatePay(PayMethod pay) {
 		ConnectionManager conn = new ConnectionManager();
 		
@@ -147,7 +124,7 @@ public class PayDao {
 			PreparedStatement payUpdate = conn.getConnection().prepareStatement("UPDATE T_PAG_RESTAURANTE "
 						+ "SET CD_PAG = ? WHERE CD_RELACAO = ?");
 				
-			payUpdate.setString(1, getPaymentKey(conn, pay.getPayMethod()));
+			payUpdate.setString(1, pay.getPayMethod());
 			payUpdate.setInt(2, pay.getId());
 				
 			if (conn.executeCommand(payUpdate, false) == 1) {

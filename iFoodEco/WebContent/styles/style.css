@@ -221,3 +221,8 @@ form label{
 .caixa_input{
     padding: 10px;
 }
+
+.divPix{
+    height: 20%;
+    margin: 5px;
+}
