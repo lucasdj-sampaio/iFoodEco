@@ -226,3 +226,78 @@ form label{
     height: 20%;
     margin: 5px;
 }
+
+.switch{
+    display: inline-block;
+    position: relative;
+    width: 58px;
+    vertical-align: top;    
+
+}
+
+.switch > label{
+    display: block;
+    position: relative;
+    height: 23px;
+    background-color: #FFF;
+    border: 2px solid #ea1d2c;
+    border-radius: 10px;
+    transition: all 0.15s ease-in-out;
+    font-size: 12px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.switch > label:before{
+    content: attr(data-desliga);
+    position: absolute;
+    top: 0;
+    right: 3px;
+    width: 33px;    
+}
+
+.switch > label:after{
+    content: '';
+    display: block;
+    width: 17px;
+    height: 18px;
+    margin: 2px;
+    border-radius: 10px;
+    background-color: #ea1d2c;
+}
+
+.switch > input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    opacity: 0;
+}
+
+.switch > input:checked + label{
+    padding-left: 33px;
+    background-color: #3fb6f2;
+    border-color: #ea1d2c;
+    color: #FFF;
+
+}
+
+.switch > input:checked + label:before{
+    content: attr(data-liga);
+    left: 1px;
+}
+
+.switch > input:checked + label: after{
+    margin: 1px;
+    width: 19px;
+    height: 19px;
+    background-color: #FFF;
+}
+
+.titulo_entrega{
+    font-weight: bold;
+    color: #737374;
+    font-size: 18px;
+    margin: 20px 0;    
+}

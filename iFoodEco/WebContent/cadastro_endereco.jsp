@@ -73,10 +73,16 @@
 					<div class="alinhar" style="display: inline-flex;">				
 						<input name="numero" id="numero" type="text" style="width: 240px; height: 40px; font-size: 17px;" />				
 						<input name="complemento" id="complemento" type="text" style=" width: 240px; height: 40px; font-size: 17px; margin-left: 15px"/>	
-					</div>
-
-					<input type="submit" value="Continuar" class="enviar">
+					</div>				
 				</form>
+				<div>
+					<p class="titulo_entrega">Sua loja aceitará entrega agendada?</p>
+					<span class="switch">
+						<input type="checkbox" id="btn1">
+						<label for="btn1" data-liga="Sim" data-desliga ="Não"></label>
+					</span>			
+					<input type="submit" value="Continuar" class="enviar">
+				</div>
 			</div>
 			
 			<script type="text/javascript">
