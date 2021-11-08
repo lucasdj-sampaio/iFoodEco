@@ -38,7 +38,7 @@ body {
     padding: 3px 0;
 }
 
-.cabeçalho {
+.cabecalho {
 	display: flex;
 	justify-content: center;
 	margin-top: 10px;
@@ -231,8 +231,8 @@ form label{
     display: inline-block;
     position: relative;
     width: 58px;
-    vertical-align: top;    
-
+    vertical-align: top;
+    margin: -10px 0px -13px 33px;    
 }
 
 .switch > label{
@@ -251,7 +251,7 @@ form label{
 .switch > label:before{
     content: attr(data-desliga);
     position: absolute;
-    top: 0;
+    top: 1px;
     right: 3px;
     width: 33px;    
 }
@@ -276,28 +276,32 @@ form label{
 }
 
 .switch > input:checked + label{
-    padding-left: 33px;
-    background-color: #3fb6f2;
+    background-color: #f35560d7;
     border-color: #ea1d2c;
     color: #FFF;
-
 }
 
 .switch > input:checked + label:before{
     content: attr(data-liga);
-    left: 1px;
+    right: 18px;
+    top: 1px;
 }
 
-.switch > input:checked + label: after{
-    margin: 1px;
+.switch > input:checked + label:after{
+    margin-left: 33px;
     width: 19px;
     height: 19px;
     background-color: #FFF;
+}
+
+.entregaAgendada{
+    margin-top: 25px;
+    display: inline-flex;
 }
 
 .titulo_entrega{
     font-weight: bold;
     color: #737374;
     font-size: 18px;
-    margin: 20px 0;    
+    margin: 26px 0px 11px 0px;    
 }

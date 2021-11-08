@@ -7,7 +7,7 @@
   </head>
 
 	<header>
-		<div class="cabeçalho" >
+		<div class="cabecalho" >
 			<h1 class="seta"><a href="cadastro_endereco.jsp"><img src="Imagem/seta2.png" alt="Voltar"></a></h1>
 			<h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>       
 		</div>           

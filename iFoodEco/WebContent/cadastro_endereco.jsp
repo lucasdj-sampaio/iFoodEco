@@ -9,9 +9,9 @@
 	<body>
 	
 		<header>
-	    	<div class="cabeçalho" >
-					<h1 class="seta"><a href="index.jsp"><img src="Imagem/seta2.png" alt="Voltar"></a></h1>
-	        <h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>        
+	    	<div class="cabecalho" >
+				<h1 class="seta"><a href="index.jsp"><img src="Imagem/seta2.png" alt="Voltar"></a></h1>
+	        	<h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>        
 	    	</div>            
 	    	<div class="faixa"></div>
 		</header>
@@ -63,7 +63,7 @@
 					<label for="bairro"style="font-size: 15px; margin: 20px 0">Bairro</label>
 					<input name="bairro" id="bairro" type="text" required style="width: 500px; height: 40px; font-size: 17px" />
 					<label for="logradouro"style="font-size: 15px; margin: 20px 0">Endereço</label>
-					<input name="logradouro" id="logradouro" type="text" required style="width: 500px; height: 40px; font-size: 17px";/>				
+					<input name="logradouro" id="logradouro" type="text" required style="width: 500px; height: 40px; font-size: 17px"/>				
 					
 					<div class="alinhar" style="display: inline-flex;">
 						<label for="numero"style="font-size: 15px; margin: 20px 0">Número</label>				
@@ -73,19 +73,21 @@
 					<div class="alinhar" style="display: inline-flex;">				
 						<input name="numero" id="numero" type="text" style="width: 240px; height: 40px; font-size: 17px;" />				
 						<input name="complemento" id="complemento" type="text" style=" width: 240px; height: 40px; font-size: 17px; margin-left: 15px"/>	
-					</div>				
-				</form>
-				<div>
+					</div>	
+					
+					<div class="entregaAgendada">
 					<p class="titulo_entrega">Sua loja aceitará entrega agendada?</p>
-					<span class="switch">
-						<input type="checkbox" id="btn1">
-						<label for="btn1" data-liga="Sim" data-desliga ="Não"></label>
-					</span>			
-					<input type="submit" value="Continuar" class="enviar">
-				</div>
-			</div>
-			
-			<script type="text/javascript">
+						<span class="switch">
+							<input name="entregaAgendada" type="checkbox" id="btn1">
+							<label id="labelValue" for="btn1" data-liga="Sim" data-desliga ="Não"></label>
+						</span>			
+					</div>
+					<input type="submit" value="Continuar" class="enviar">			
+				</form>
+			</div>	
+		</main>
+		
+		<script>
 				$("#cep").focusout(function(){
 					//Início do Comando AJAX
 					$.ajax({
@@ -114,6 +116,5 @@
 					});
 				});
 			</script>
-		</main>
 	</body>
 </html>

@@ -31,7 +31,7 @@ public class AddressServlet extends HttpServlet {
 				, request.getParameter("complemento"));
 		
 		restaurant = (Restaurant)request.getSession(false).getAttribute("restaurant");	
-		
+		restaurant.setScheduledDelivery("on".equals(request.getParameter("entregaAgendada")) ? true : false);
 		restaurant.setAddress(address);
 		
 		session.removeAttribute("restaurant");
