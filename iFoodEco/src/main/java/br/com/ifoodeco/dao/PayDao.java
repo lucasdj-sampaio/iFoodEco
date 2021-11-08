@@ -12,7 +12,7 @@ public class PayDao {
 		List<PayMethod> payList = new ArrayList<PayMethod>();
 		
 		try {
-			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT cd_pag "
+			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT PR.cd_pag "
 					+ ", cd_relacao FROM T_PAG_RESTAURANTE PR, T_FORMA_PAG FP "
 					+ "WHERE PR.cd_pag = FP.cd_pag AND nr_cnpj = ?");
 			

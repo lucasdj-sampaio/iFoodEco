@@ -173,7 +173,8 @@
                 <div style="display: inline-flex;">
                     <input id="nr-logradouro-selecao" type="text" required style="width: 500px; height: 40px; font-size: 17px; margin: 0 0 30px;" /> 
                 </div>
-            </div>            
+            </div>
+            <div>            
                 <label for="complemento"style="font-size: 15px; margin: 20px 0">Complemento</label>
             </div>
             <div>

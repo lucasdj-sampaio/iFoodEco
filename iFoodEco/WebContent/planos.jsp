@@ -9,7 +9,7 @@
         
 		<header>
 			<div class="cabeçalho" >
-				<h1 class="seta"><a href="pagamento.jsp"><img src="Imagem/seta2.png" alt="Voltar"></a></h1>
+				<h1 class="seta"><a href="embalagem.jsp"><img src="Imagem/seta2.png" alt="Voltar"></a></h1>
 				<h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>       
 			</div>           
 			<div class="faixa"></div>
@@ -22,11 +22,15 @@
 
 			<div class="planos">
 				<div class="plano_basico">
-					<img src="Imagem/plano_basico.jpg">				
+					<a href="addRestaurant?plano=basico">
+						<img src="Imagem/plano_basico.jpg">			
+					</a> 	
 				</div>
 
 				<div class="plano_entrega">
-					<img src="Imagem/plano_entrega.jpg">
+					<a href="addRestaurant?plano=entrega">
+						<img src="Imagem/plano_entrega.jpg">
+					</a>
 				</div>		
 			</div>
     </main>

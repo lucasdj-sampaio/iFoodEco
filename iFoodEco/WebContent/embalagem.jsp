@@ -10,7 +10,7 @@
 
         <header>
             <div class="cabeçalho" >
-                <h1 class="seta"><a href="planos.jsp"><img src="Imagem/seta2.png" alt="Voltar"></a></h1>
+                <h1 class="seta"><a href="pagamento.jsp"><img src="Imagem/seta2.png" alt="Voltar"></a></h1>
                 <h1 class="logo" style="display: block; margin-right: auto; margin-left: auto;" ><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1>       
             </div>           
             <div class="faixa"></div>
@@ -36,34 +36,36 @@
             </script>
 
             <div class="container" style="display: flex;">
-                <div class="container-1" style="width: 500px;">
-                    <div>
-                        <label><input type="checkbox" name="pagamento"style="margin: 10px 2px;">Embalagem de vidro</label>  
-                    </div>
-                    <div>
-                        <label><input type="checkbox" name="pagamento" style="margin: 10px 2px;">Embalagem de aluminio</label> 
-                    </div>
-                    <div>
-                        <label><input type="checkbox" name="pagamento"style="margin: 10px 2px;">Embalagem de isopor</label> 
-                    </div>
-                    <div>                        
-                        <label><input type="checkbox" name="pagamento"style="margin: 10px 2px;">Embalagem de plástico</label>
-                    </div>
-                    <div>
-                        <label><input type="checkbox" name="pagamento"style="margin: 10px 2px;">Embalagem de papel</label>
-                    </div>
-                    <div>
-                        <label><input type="checkbox" name="pagamento"style="margin: 10px 2px;">Talher de plástico</label>
-                    </div>
-                    <div>
-                        <label><input type="checkbox" name="pagamento"style="margin: 10px 2px;">Canudo de plástico</label>
-                    </div>
-                    <div>
-                        <label><input type="checkbox" name="pagamento"style="margin: 10px 2px;">Outros</label>
-                    </div>                     
+                <form action="fifthStep" method="post">
+                    <div class="container-1" style="width: 500px;">
+                        <div>
+                            <label><input type="checkbox" name="embalagem" value="emb_vidro" style="margin: 10px 2px;">Embalagem de vidro</label>  
+                        </div>
+                        <div>
+                            <label><input type="checkbox" name="embalagem" value="emb_aluminio" style="margin: 10px 2px;">Embalagem de aluminio</label> 
+                        </div>
+                        <div>
+                            <label><input type="checkbox" name="embalagem" value="emb_isopor" style="margin: 10px 2px;">Embalagem de isopor</label> 
+                        </div>
+                        <div>                        
+                            <label><input type="checkbox" name="embalagem" value="emb_plastico" style="margin: 10px 2px;">Embalagem de plástico</label>
+                        </div>
+                        <div>
+                            <label><input type="checkbox" name="embalagem" value="emb_papel" style="margin: 10px 2px;">Embalagem de papel</label>
+                        </div>
+                        <div>
+                            <label><input type="checkbox" name="embalagem" value="talher_plastico" style="margin: 10px 2px;">Talher de plástico</label>
+                        </div>
+                        <div>
+                            <label><input type="checkbox" name="embalagem" value="canudo_plastico" style="margin: 10px 2px;">Canudo de plástico</label>
+                        </div>
+                        <div>
+                            <label><input type="checkbox" name="embalagem" value="outros_eco" style="margin: 10px 2px;">Outros</label>
+                        </div>                     
 
-                    <input type="submit" value="CADASTRAR" class="enviar">                    
-                 </div>                
+                        <input type="submit" value="Continuar" class="enviar">                    
+                    </div>          
+                </form>      
             </div> 
         </main>
     </body>

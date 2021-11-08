@@ -77,7 +77,7 @@
                             <div class="divPix"><br/>
                                 <label><input type="radio" name="cnpjPix" value="cnpj_cpf" id="cnpj1" onchange="displayPagamento(this.value)">CNPJ/CPF</label>
                                 <div id="cnpjPagamento" hidden=true>
-                                    <input name="cnpjPixValor" type="text" placeholder="000.000.000-00" />                      
+                                    <input name="cnpjPixValor" class="caixa_input" type="text" placeholder="000.000.000-00" />                      
                                     <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir1')">
                                 </div>
                             </div>
@@ -85,7 +85,7 @@
                             <div class="divPix"><br/>
                                 <label><input type="radio" name="emailPix" value="email"  id="email1" onchange="displayPagamento(this.value)">E-mail</label>
                                 <div id="emailPagamento" hidden=true>
-                                    <input name="emailPixValor" type="text" placeholder="email@email.com" />
+                                    <input name="emailPixValor" class="caixa_input" type="text" placeholder="email@email.com" />
                                     <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir2')"> 
                                 </div>
                             </div>
@@ -93,7 +93,7 @@
                             <div class="divPix"><br/>
                                 <label><input type="radio" name="celularPix" value="celular" id="celular1" onchange="displayPagamento(this.value)">Celular</label>
                                 <div id="celularPagamento" hidden=true>
-                                    <input name="celularPixValor" type="text" placeholder="(00)00000-0000" />
+                                    <input name="celularPixValor" class="caixa_input" type="text" placeholder="(00)00000-0000" />
                                     <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir3')">   
                                 </div>
                             </div> 
@@ -101,7 +101,7 @@
                             <div class="divPix"><br/>
                                 <label><input type="radio" name="aleatoriaPix" value="aleatoria" id="aleatoria1" onchange="displayPagamento(this.value)">Aleatório</label>                                            
                                 <div id="aleatoriaPagamento" hidden=true>  
-                                    <input name="aleatoriaPixValor" type="text" placeholder="h91b.SR4^x5G"/>
+                                    <input name="aleatoriaPixValor" class="caixa_input" type="text" placeholder="h91b.SR4^x5G"/>
                                     <img id="botao_excluir" src="Imagem/excluir.png" onclick="clicar('excluir4')">   
                                 </div>
                             </div> 

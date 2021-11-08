@@ -44,7 +44,7 @@ public class PayServlet extends HttpServlet {
 		session.removeAttribute("restaurant");
 		session.setAttribute("restaurant", restaurant);
 		
-    	RequestDispatcher rd = request.getRequestDispatcher("planos.jsp");
+    	RequestDispatcher rd = request.getRequestDispatcher("embalagem.jsp");
     	rd.forward(request, response);
 	}
     
