@@ -22,11 +22,27 @@ public class GetRestaurantServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
 		
+		String jspFile;
 		restaurant = RestaurantDao.getRestaurant(Long.parseLong(request.getParameter("cnpj")));
+		int screen = Integer.parseInt(request.getParameter("screen"));
 		
 		request.setAttribute("restaurant", restaurant);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("retorno_cadastro_index.jsp");
+		switch(screen) {
+			case 1:
+				jspFile = "retorno_cadastro_index.jsp";
+				break;
+			case 2:
+				jspFile = "retorno_cadastro_embalagem.jsp";
+				break;
+			case 3:
+				jspFile = "retorno_cadastro_pagamento.jsp";
+				break;
+			default:
+				jspFile = "retorno_cadastro_index.jsp";
+		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher(jspFile);
 	    rd.forward(request, response);
 	}
 }

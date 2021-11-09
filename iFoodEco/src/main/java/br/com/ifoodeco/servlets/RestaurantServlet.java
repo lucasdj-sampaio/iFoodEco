@@ -28,10 +28,12 @@ public class RestaurantServlet extends HttpServlet {
 			
 		restaurant = (Restaurant)request.getSession(false).getAttribute("restaurant");
 		restaurant.setPlan(request.getParameter("plano").toString());
+		
 		session.removeAttribute("restaurant");
+		request.setAttribute("restaurant", restaurant);
 		
 		if (RestaurantDao.insertRestaurantDao(restaurant)) {
-			RequestDispatcher rd = request.getRequestDispatcher("getRestaurant?cnpj=" + restaurant.getCnpjNumber());
+			RequestDispatcher rd = request.getRequestDispatcher("retorno_cadastro_index.jsp");
 	    	rd.forward(request, response);
 		}
 		else {

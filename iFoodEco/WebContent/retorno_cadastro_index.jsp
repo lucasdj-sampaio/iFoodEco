@@ -1,115 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<jsp:useBean id="restaurant" class="br.com.ifoodeco.entity.Restaurant" scope="session"/>
+<jsp:useBean id="restaurant" class="br.com.ifoodeco.entity.Restaurant" scope="request"/>
 
 <!doctype html>
     <html lang="pt-br">     
     <head>
         <%@ include file="directiva.jsp" %>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     </head>
 
+    <header>
+        <script>
+            window.onload = function() {
+                document.getElementById('perfilLink').style.color = "#ea1d2c";
+                document.getElementById('perfilIcon').scr = "Imagem/2-vermelho.png";
+            }
+        </script>
+    </header>
+
     <body>
-        <div class="dados_cadastradas">
+
+        <%@ include file="menu.jsp" %>
+
+        <div class="dados_cadastrados">
             <h1 class="titulo-principal-recadastro">Perfil cadastrado</h1>      
             <img class="editar" src="Imagem/editar.png" onClick="habilitar()"> 
         </div> 
 
-        <div class="faixa-indice">
-           <h1 class="logo" style="margin: 10px 70px; "><img src="Imagem/logo_ifood3.png" alt="Logo Ifood"></h1> 
-           <div>
-                <div class="indice1" style="display: inline-flex;margin: 10px">
-                    <h1 ><img src="Imagem/1.png" width="20px" style="margin: 0 10px;"></h1>             
-                    <h3>Inicio</h3> 
-                </div>
-            </div>
-
-            <div>
-                <div class="indice2" style="display: inline-flex; margin: 10px;">
-                    <h1><img src="Imagem/2-vermelho.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3 style="color: #ea1d2c;">Perfil</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice9" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/9.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3 >Formas de pagamento</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice12" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/12.png"width="15px" style="margin: 0 12px;"></h1> 
-                    <h3>Embalagens</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice3" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/3.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3>Avaliações</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice4" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/4.png"width="15px" style="margin: 0 12px;"></h1> 
-                    <h3>Pedidos</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice5" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/5.png"width="10px" style="margin: 0 15px;"></h1> 
-                    <h3>Financeiro</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice6" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/6.png"width="15px" style="margin: 0 12px;"></h1> 
-                    <h3>Cardápios</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice7" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/7.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3>Horários</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice8" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/8.png"width="15px" style="margin: 0 12px;"></h1> 
-                    <h3>Areas de entrega</h3>
-                </div>
-            </div>           
-            <div>
-                <div class="indice10" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/10.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3>Marketing</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice11" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/11.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3>Promoções</h3>
-                </div>
-            </div>           
-            <div>
-                <div class="indice13" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/13.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3>Serviços</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice14" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/14.png"width="20px" style="margin: 0 10px;"></h1> 
-                    <h3>Desempenho</h3>
-                </div>
-            </div>
-            <div>
-                <div class="indice15" style="display: inline-flex;margin: 10px">
-                    <h1><img src="Imagem/15.png"width="20px" style="margin: 0 10px;"></h1>            
-                    <h3>Chamados e pedidos</h3>           
-                </div>
-            </div>
-        </div>
-        <main class="main_formato_recadastro">
+        <main class="main_formato_recadastro">  
             <form action="updateProfile" method="post">               
                 <div>
                     <label for="cnpj"style="font-size: 15px; ">CNPJ</label>
@@ -200,7 +116,7 @@
                 
                 <div>
                     <label for="complemento"style="font-size: 15px; margin: 20px 0">Complemento</label>
-                    <input name="complemento" value="${restaurant.address.complement}" class="updateInput" id="complemento" type="text" required disabled /> 
+                    <input name="complemento" value="${restaurant.address.complement}" class="updateInput" id="complemento" type="text" disabled /> 
                 </div>
                 
                 <input type="submit" id="inputAtualizar" value="Atualizar Registros" class="enviar" hidden=true> 
