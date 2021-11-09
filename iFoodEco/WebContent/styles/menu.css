@@ -1,0 +1,59 @@
+.faixa-indice{
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  border-right: 10px;
+  top: 0;
+  left: 0;
+  display: inline-grid;
+  background: #F2F2F2;
+}
+
+.titulo-principal-recadastro{
+  font-size: 25px;    
+  font-weight: bold;
+}
+
+.logo, .user{
+  margin-top: 4%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.iconSize1{
+  width:20px;
+  margin: 9px 10px;
+}
+
+.iconSize2{
+  width:15px;
+  margin: 9px 12px;
+}
+
+.iconSize3{
+  width:10px;
+  margin: 6px 15px;
+}
+
+.linkMenu{
+  border: 20px;
+  border-color: black;
+  display: inline-flex;
+  margin-left: 5px;
+  padding: 0px center 0px auto;
+}
+
+.linkMenu a{
+  margin-top: 4%;
+  color: #737374;
+  text-decoration: none;
+}
+
+.linkMenu:hover, a:hover{
+  background-color: #dfdfdf;
+}
+
+.linkMenu a:hover{
+  font-weight: bold;
+  color: #ea1d2c;
+}
