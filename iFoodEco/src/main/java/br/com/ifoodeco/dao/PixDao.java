@@ -156,7 +156,7 @@ public class PixDao {
 			pixUpdate.setInt(2, getPixKeyId(conn, pix.getKeyName()));
 			pixUpdate.setInt(3, pix.getId());
 
-			if(conn.executeCommand(pixUpdate, false) == 1) {
+			if(conn.executeCommand(pixUpdate, false) <= 1) {
 				conn.getConnection().commit();
 				return true;
 			}

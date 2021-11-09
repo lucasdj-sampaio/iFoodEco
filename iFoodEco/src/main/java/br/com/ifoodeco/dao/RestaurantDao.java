@@ -230,7 +230,7 @@ public class RestaurantDao {
 			restaurantUpdate.setInt(8, restaurant.getAccountNumber());
 			restaurantUpdate.setLong(9, restaurant.getCnpjNumber());
 								
-			if (conn.executeCommand(restaurantUpdate, false) == 1) 
+			if (conn.executeCommand(restaurantUpdate, false) <= 1) 
 			{
 				conn.getConnection().commit();
 				return true;

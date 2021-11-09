@@ -100,7 +100,7 @@ public class AddressDao {
 			  addressUpdate.setString(4, address.getComplement());
 			  addressUpdate.setInt(5, address.getId());
 			  
-			if (conn.executeCommand(addressUpdate, false) == 1) {
+			if (conn.executeCommand(addressUpdate, false) <= 1) {
 				conn.getConnection().commit();
 				return true;
 			}

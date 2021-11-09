@@ -151,7 +151,7 @@ public class PackagingDao {
 			packUpdate.setInt(1, getPackId(conn, pack.getPackagingName()));
 			packUpdate.setInt(2, pack.getId());
 
-			if (conn.executeCommand(packUpdate, false) == 1) {
+			if (conn.executeCommand(packUpdate, false) <= 1) {
 				conn.getConnection().commit();
 				
 				return true;

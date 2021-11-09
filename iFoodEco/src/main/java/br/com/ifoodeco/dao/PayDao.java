@@ -127,7 +127,7 @@ public class PayDao {
 			payUpdate.setString(1, pay.getPayMethod());
 			payUpdate.setInt(2, pay.getId());
 				
-			if (conn.executeCommand(payUpdate, false) == 1) {
+			if (conn.executeCommand(payUpdate, false) <= 1) {
 				conn.getConnection().commit();
 				
 				return true;
