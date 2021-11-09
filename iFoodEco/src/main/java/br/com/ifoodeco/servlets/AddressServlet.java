@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import br.com.ifoodeco.entity.Address;
 import br.com.ifoodeco.entity.Restaurant;
+import br.com.ifoodeco.util.Util;
 
 @WebServlet(description = "Get address data from ifood html page", urlPatterns = { "/secondStep" })
 public class AddressServlet extends HttpServlet {
@@ -26,7 +27,7 @@ public class AddressServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		
 		Address address = new Address(request.getParameter("logradouro").toString()
-				, Integer.parseInt(request.getParameter("cep").replace("-", ""))
+				, Integer.parseInt(Util.replaceChar(request.getParameter("cep")))
 				, Integer.parseInt(request.getParameter("numero"))
 				, request.getParameter("complemento"));
 		

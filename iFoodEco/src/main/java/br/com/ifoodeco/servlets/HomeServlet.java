@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import br.com.ifoodeco.entity.Restaurant;
+import br.com.ifoodeco.util.Util;
 
 @WebServlet(description = "This Sevlet get the first data to navegate on webPage", urlPatterns = { "/firstStep" })
 public class HomeServlet extends HttpServlet {
@@ -32,11 +33,7 @@ public class HomeServlet extends HttpServlet {
     	
 		restaurant = new Restaurant();
     	restaurant.setEmailAddress(request.getParameter("email").toString());
-    	restaurant.setNumber(Long.parseLong(request.getParameter("telefone").toString()
-    			.replace("(", "")
-    			.replace(")", "")
-    			.replace("-", "")
-    			.replace(" ","").trim()));
+    	restaurant.setNumber(Long.parseLong(Util.replaceChar(request.getParameter("telefone").toString())));
     	
     	session.setAttribute("userName", request.getParameter("nome"));
     	session.setAttribute("restaurant", restaurant);

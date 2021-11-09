@@ -169,9 +169,11 @@ form label{
     height: 100%;
     width: 250px;
     position: fixed;
+    border-right: 10px;
+    box-shadow: black;
     top: 0;
     left: 0;
-    background: #dfdfdf;
+    background: #F2F2F2;
 }
 
 .indice2{
@@ -325,4 +327,8 @@ input:focus, select:focus, checkbox:checked {
     outline: none !important;
     border:1px solid #ea1d2c;
     box-shadow: 2px #ea1d2c;
+}
+
+select.decorated option:hover {
+    background-color: #f35560d7;
 }

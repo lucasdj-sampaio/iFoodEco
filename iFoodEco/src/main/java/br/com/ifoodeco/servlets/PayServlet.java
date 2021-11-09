@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import br.com.ifoodeco.entity.PayMethod;
 import br.com.ifoodeco.entity.Pix;
 import br.com.ifoodeco.entity.Restaurant;
+import br.com.ifoodeco.util.Util;
 
 @WebServlet(description = "This servlet get payment data from webPage", urlPatterns = { "/fourthStep" })
 public class PayServlet extends HttpServlet {
@@ -56,11 +57,7 @@ public class PayServlet extends HttpServlet {
     		
     		if (currentParameter.equals("cnpjPix")) {
     			pixList.add(new Pix(request.getParameter("cnpjPix").toString()
-						, request.getParameter("cnpjPixValor").toString()
-						.replace("-", "")
-						.replace("/", "")
-						.replace(".", "")
-						.replace(" ", "").trim()));
+						, Util.replaceChar(request.getParameter("cnpjPixValor").toString())));
     		}
     		else if (currentParameter.equals("emailPix")) {
 				pixList.add(new Pix(request.getParameter("emailPix").toString()
@@ -68,11 +65,7 @@ public class PayServlet extends HttpServlet {
     		}
     		else if (currentParameter.equals("celularPix")) {
 				pixList.add(new Pix(request.getParameter("celularPix").toString()
-						, request.getParameter("celularPixValor").toString()
-						.replace("(", "")
-		    			.replace(")", "")
-		    			.replace("-", "")
-		    			.replace(" ","").trim()));
+						, Util.replaceChar(request.getParameter("celularPixValor").toString())));
     		}
     		else if (currentParameter.equals("aleatoriaPix")) {
 				pixList.add(new Pix(request.getParameter("aleatoriaPix").toString()

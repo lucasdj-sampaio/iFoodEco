@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import br.com.ifoodeco.entity.Restaurant;
+import br.com.ifoodeco.util.Util;
 
 @WebServlet(description = "This servlet get store data from webPage", urlPatterns = { "/thirdStep" })
 public class StoreServlet extends HttpServlet {
@@ -26,17 +27,9 @@ public class StoreServlet extends HttpServlet {
 		restaurant = (Restaurant)request.getSession(false).getAttribute("restaurant");	
 		restaurant.setName(request.getParameter("nomeLoja").toString());
 		restaurant.setCategory(request.getParameter("categoria").toString());
-		restaurant.setCnpjNumber(Long.parseLong(request.getParameter("cnpj").toString()
-				.replace("-", "")
-				.replace("/", "")
-				.replace(".", "")
-				.replace(" ", "").trim()));
-		restaurant.setAgencyNumber(Integer.parseInt(request.getParameter("agencia").toString()
-				.replace("-", "")
-				.replace(" ", "").trim()));
-		restaurant.setAccountNumber(Integer.parseInt(request.getParameter("conta")
-				.replace("-", "")
-				.replace(" ", "").trim()));
+		restaurant.setCnpjNumber(Long.parseLong(Util.replaceChar(request.getParameter("cnpj").toString())));
+		restaurant.setAgencyNumber(Integer.parseInt(Util.replaceChar(request.getParameter("agencia").toString())));
+		restaurant.setAccountNumber(Integer.parseInt(Util.replaceChar(request.getParameter("conta"))));
 		
 		session.removeAttribute("restaurant");
 		session.setAttribute("restaurant", restaurant);
