@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:useBean id="restaurant" class="br.com.ifoodeco.entity.Restaurant" scope="session"/>
+<jsp:useBean id="restaurant" class="br.com.ifoodeco.entity.Restaurant" scope="request"/>
 
 <!doctype html>
     <html lang="pt-br">     
@@ -10,15 +10,22 @@
     <header>
         <script>
             window.onload = function() {
-                document.getElementById('perfilIcon').style.color = "#ea1d2c";
+                document.getElementById('perfilLink').style.color = "#ea1d2c";
+                document.getElementById('perfilIcon').scr = "Imagem/2-vermelho.png";
             }
         </script>
     </header>
 
     <body>
-        <main class="main_formato_recadastro">
-            <%@ include file="perfil_cadastrado.jsp" %>
 
+        <%@ include file="menu.jsp" %>
+
+        <div class="dados_cadastrados">
+            <h1 class="titulo-principal-recadastro">Perfil cadastrado</h1>      
+            <img class="editar" src="Imagem/editar.png" onClick="habilitar()"> 
+        </div> 
+
+        <main class="main_formato_recadastro">  
             <form action="updateProfile" method="post">               
                 <div>
                     <label for="cnpj"style="font-size: 15px; ">CNPJ</label>

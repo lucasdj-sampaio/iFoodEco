@@ -1,6 +1,6 @@
 .faixa-indice{
   height: 100%;
-  width: 250px;
+  width: 20%;
   position: fixed;
   border-right: 10px;
   top: 0;
@@ -15,45 +15,76 @@
 }
 
 .logo, .user{
-  margin-top: 4%;
+  margin-top: 3%;
   text-align: center;
   font-weight: bold;
 }
 
+.user{
+  margin-bottom: 7%;
+}
+
 .iconSize1{
-  width:20px;
-  margin: 9px 10px;
+  width: 19px;
+  margin: 16px 10px 0px 20px;
 }
 
 .iconSize2{
-  width:15px;
-  margin: 9px 12px;
+  width: 15px;
+  margin: 13px 12px 0px 22px;
 }
 
 .iconSize3{
-  width:10px;
-  margin: 6px 15px;
+  width: 10px;
+  margin: 10px 15px 0px 23px;
 }
 
-.linkMenu{
+.iconSize4{
+  width: 25px;
+  margin: 6px 7px 0px 15px;
+}
+
+.linkMenu, .linkMenu2{
   border: 20px;
   border-color: black;
   display: inline-flex;
-  margin-left: 5px;
   padding: 0px center 0px auto;
 }
 
-.linkMenu a{
-  margin-top: 4%;
+.linkMenu a, .linkMenu2 a{
+  margin-top: 17px;
   color: #737374;
   text-decoration: none;
 }
 
-.linkMenu:hover, a:hover{
+.linkMenu2 a.disabled{
+  pointer-events: none;
+}
+
+.linkMenu:hover, a:hover, .linkMenu2:hover{
   background-color: #dfdfdf;
 }
 
 .linkMenu a:hover{
   font-weight: bold;
   color: #ea1d2c;
+}
+
+.novoFunc{
+  margin: 14px 20px 0px auto;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #ea1d2c;
+  text-align: center;
+  height: 18px;
+  width: 45px;
+  border-radius: 8px;
+  padding-top: 1px;
+}
+
+.novoFunc label{
+  color: #ea1d2c;
+  font-size: 65%;
+  text-align: center;
+  font-weight: bold;
 }

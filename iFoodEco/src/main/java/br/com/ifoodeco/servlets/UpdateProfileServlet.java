@@ -18,7 +18,7 @@ public class UpdateProfileServlet extends HttpServlet {
     @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	request.setCharacterEncoding("UTF-8");
-    	
+
     	restaurant = RestaurantDao
 				.getRestaurant(Long.parseLong(Util.replaceChar(request.getParameter("cnpj"))));
     	
@@ -34,7 +34,9 @@ public class UpdateProfileServlet extends HttpServlet {
 		
 		RestaurantDao.updateRestaurantDao(restaurant);
 		
-    	RequestDispatcher rd = request.getRequestDispatcher("getRestaurant?cnpj=" + restaurant.getCnpjNumber());
+		request.setAttribute("restaurant", restaurant);
+		
+    	RequestDispatcher rd = request.getRequestDispatcher("retorno_cadastro_index.jsp");
     	rd.forward(request, response);
 	}
 }
