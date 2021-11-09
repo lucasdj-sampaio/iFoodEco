@@ -4,4 +4,5 @@
 <title>Ifood para Parceiros</title>  
 <link rel="stylesheet" href="styles/reset.css">      
 <link rel="stylesheet" href="styles/style.css">
-<link rel="icon" href="Imagem/logo_aba.png">       
+<link rel="icon" href="Imagem/logo_aba.png"> 
+<script type="text/javascript" src="utilities.js"></script>     

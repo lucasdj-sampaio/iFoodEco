@@ -39,4 +39,16 @@ public class RestaurantServlet extends HttpServlet {
 	    	rd.forward(request, response);
 		}
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  	
+    	request.setCharacterEncoding("UTF-8");
+				
+		restaurant = (Restaurant)request.getSession(false).getAttribute("restaurant");
+			
+		RestaurantDao.updateRestaurantDao(restaurant);
+		
+    	RequestDispatcher rd = request.getRequestDispatcher("");
+    	rd.forward(request, response);
+	}
 }

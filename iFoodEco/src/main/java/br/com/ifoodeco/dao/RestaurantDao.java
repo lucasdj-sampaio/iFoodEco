@@ -3,6 +3,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
+import br.com.ifoodeco.entity.Packaging;
+import br.com.ifoodeco.entity.PayMethod;
+import br.com.ifoodeco.entity.Pix;
 import br.com.ifoodeco.entity.Restaurant;
 
 public class RestaurantDao {
@@ -179,7 +183,35 @@ public class RestaurantDao {
 		}
 	}
 	
-	public static boolean updateRestaurant(Restaurant restaurant) {
+	public static boolean updateRestaurantDao(Restaurant restaurant) {
+		for (Packaging pack : restaurant.getPackList()) {
+			if(!PackagingDao.updatePack(pack)) {
+				return false;
+			}
+		}
+		for (PayMethod pay : restaurant.getPayList()) {
+			if(!PayDao.updatePay(pay)) {
+				return false;
+			}
+		}
+		for (Pix pix : restaurant.getPixList()) {
+			if(!PixDao.updatePix(pix)) {
+				return false;
+			}
+		}
+		
+		if(!AddressDao.updateAddress(restaurant.getAddress())) {
+			return false;
+		}
+		
+		if(RestaurantDao.updateRestaurant(restaurant)) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	private static boolean updateRestaurant(Restaurant restaurant) {
 		ConnectionManager conn = new ConnectionManager();
 		
 		try {		
