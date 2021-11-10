@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:useBean id="restaurant" class="br.com.ifoodeco.entity.Restaurant" scope="request"/>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.List"%>
+<%@page import="br.com.ifoodeco.entity.Restaurant"%>
+<%@page import="br.com.ifoodeco.entity.Category"%>
+<%@page import="br.com.ifoodeco.entity.Plan"%>
 
 <!doctype html>
     <html lang="pt-br">     
@@ -63,53 +68,34 @@
                 </div>
                 
                 <div>
-                    <label for="plano"style="font-size: 15px; ">Plano selecionado</label>  
-                    <select name="plano" id="select-plano" class="updateInput" value="${restaurant.plan}" required disabled>
-                        <option value="basico">Basico</option>
-						<option value="entrega">Entrega</option>
-                    </select>                 
+                    <label for="categoria"style="font-size: 15px;">Plano Selecionado</label>
+                    <select name="plano" id="select-plano" class="updateInput" required disabled>
+                        <c:forEach var="currentPlan" items="${planList}">
+                            <c:choose>
+                                <c:when test = "${currentPlan.plan == restaurant.plan.plan}">
+                                    <option value=${currentPlan.id} selected=>${currentPlan.plan}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value=${currentPlan.id}>${currentPlan.plan}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                    </select>                
                 </div>
                 
                 <div>
                     <label for="categoria"style="font-size: 15px;">Categora Selecionada</label>
-                    <select name="categoria" id="select-categoria" class="updateInput" value="${restaurant.category}" required disabled>
-                        <option value="Açaí">Açaí</option>
-						<option value="Africana">Africana</option>
-						<option value="Alemã">Alemã</option>
-						<option value="Árabe">Árabe</option>
-						<option value="Argentina">Argentina</option>
-						<option value="Bebidas">Bebidas</option>
-						<option value="Brasileira">Brasileira</option>
-						<option value="Cafeteria">Cafeteria</option>
-						<option value="Carnes">Carnes</option>
-						<option value="Casa de Sucos">Casa de Sucos</option>
-						<option value="Chinesa">Chinesa</option>
-						<option value="Colombiana">Colombiana</option>
-						<option value="Congelados">Congelados</option>
-						<option value="Conveniência">Conveniência</option>
-						<option value="Coreana">Coreana</option>
-						<option value="Doces e Bolos">Doces e Bolos</option>
-						<option value="Espanhola">Espanhola</option>
-						<option value="Francesa">Francesa</option>
-						<option value="Frutos do Mar">Frutos do Mar</option>
-						<option value="Indiana">Indiana</option>
-						<option value="Italiana">Italiana</option>
-						<option value="Japonesa">Japonesa</option>
-						<option value="Lanches">Lanches</option>
-						<option value="Marmita">Marmita</option>
-						<option value="Mediterrânea">Mediterrânea</option>
-						<option value="Mexicana">Mexicana</option>
-						<option value="Padaria">Padaria</option>
-						<option value="Pastel">Pastel</option>
-						<option value="Peixes">Peixes</option>
-						<option value="Peruana">Peruana</option>
-						<option value="Pizza">Pizza</option>
-						<option value="Portuguesa">Portuguesa</option>
-						<option value="Salgados">Salgados</option>
-						<option value="Saudável">Saudável</option>
-						<option value="Sorvetes">Sorvetes</option>
-						<option value="Tailandesa">Tailandesa</option>
-						<option value="Vegetariana">Vegetariana</option>	
+                    <select name="categoria" id="select-categoria" class="updateInput" required disabled>
+                        <c:forEach var="currentCategory" items="${categoryList}">
+                            <c:choose>
+                                <c:when test = "${currentCategory.category == restaurant.category.category}">
+                                    <option value=${currentCategory.id} selected=>${currentCategory.category}</option>
+                                </c:when>
+                                <c:otherwise>
+                                    <option value=${currentCategory.id}>${currentCategory.category}</option>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
                     </select> 
                 </div>
                 

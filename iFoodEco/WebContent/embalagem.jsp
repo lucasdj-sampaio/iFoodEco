@@ -39,28 +39,28 @@
                 <form action="fifthStep" method="post">
                     <div class="container-1" style="width: 500px;">
                         <div>
-                            <label><input type="checkbox" name="embalagem" value="emb_vidro" style="margin: 10px 2px;">Embalagem de vidro</label>  
+                            <label><input type="checkbox" name="embalagem" value="Embalagem de Vidro" style="margin: 10px 2px;">Embalagem de Vidro</label>  
                         </div>
                         <div>
-                            <label><input type="checkbox" name="embalagem" value="emb_aluminio" style="margin: 10px 2px;">Embalagem de aluminio</label> 
+                            <label><input type="checkbox" name="embalagem" value="Embalagem de Aluminio" style="margin: 10px 2px;">Embalagem de Aluminio</label> 
                         </div>
                         <div>
-                            <label><input type="checkbox" name="embalagem" value="emb_isopor" style="margin: 10px 2px;">Embalagem de isopor</label> 
+                            <label><input type="checkbox" name="embalagem" value="Embalagem de Isopor" style="margin: 10px 2px;">Embalagem de Isopor</label> 
                         </div>
                         <div>                        
-                            <label><input type="checkbox" name="embalagem" value="emb_plastico" style="margin: 10px 2px;">Embalagem de plástico</label>
+                            <label><input type="checkbox" name="embalagem" value="Embalagem de Plastico" style="margin: 10px 2px;">Embalagem de Plastico</label>
                         </div>
                         <div>
-                            <label><input type="checkbox" name="embalagem" value="emb_papel" style="margin: 10px 2px;">Embalagem de papel</label>
+                            <label><input type="checkbox" name="embalagem" value="Embalagem de Papel" style="margin: 10px 2px;">Embalagem de Papel</label>
                         </div>
                         <div>
-                            <label><input type="checkbox" name="embalagem" value="talher_plastico" style="margin: 10px 2px;">Talher de plástico</label>
+                            <label><input type="checkbox" name="embalagem" value="Talheres de Plastico" style="margin: 10px 2px;">Talheres de Plastico</label>
                         </div>
                         <div>
-                            <label><input type="checkbox" name="embalagem" value="canudo_plastico" style="margin: 10px 2px;">Canudo de plástico</label>
+                            <label><input type="checkbox" name="embalagem" value="Canudo de Plastico" style="margin: 10px 2px;">Canudo de Plastico</label>
                         </div>
                         <div>
-                            <label><input type="checkbox" name="embalagem" value="outros_eco" style="margin: 10px 2px;">Outros</label>
+                            <label><input type="checkbox" name="embalagem" value="Outros (Embalagem Ecológica)" style="margin: 10px 2px;">Outros (Embalagem Ecológica)</label>
                         </div>                     
 
                         <input type="submit" value="Continuar" class="enviar">                    

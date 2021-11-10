@@ -7,7 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.ifoodeco.dao.CategoryDao;
 import br.com.ifoodeco.dao.PackagingDao;
+import br.com.ifoodeco.dao.PayDao;
+import br.com.ifoodeco.dao.PixDao;
+import br.com.ifoodeco.dao.PlanDao;
 import br.com.ifoodeco.dao.RestaurantDao;
 import br.com.ifoodeco.entity.Restaurant;
 
@@ -33,6 +37,8 @@ public class GetRestaurantServlet extends HttpServlet {
 		switch(screen) {
 			case 1:
 				jspFile = "retorno_cadastro_index.jsp";
+				request.setAttribute("planList", PlanDao.getAll());
+				request.setAttribute("categoryList", CategoryDao.getAll());
 				break;
 			case 2:
 				jspFile = "retorno_cadastro_embalagem.jsp";
@@ -40,6 +46,7 @@ public class GetRestaurantServlet extends HttpServlet {
 				break;
 			case 3:
 				jspFile = "retorno_cadastro_pagamento.jsp";
+				request.setAttribute("payList", PayDao.getAll());
 				break;
 			default:
 				jspFile = "retorno_cadastro_index.jsp";

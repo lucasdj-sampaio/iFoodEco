@@ -75,8 +75,9 @@ public class SolutionTest {
 	    restaurant.setAgencyNumber(9422);
 	    restaurant.setAccountNumber(402257);
 	    restaurant.setScheduledDelivery(false);
-	    restaurant.setPlan("entrega");
-	    restaurant.setCategory("Açaí");
+
+
+	    
 	    restaurant.setPixList(pixList);
 	    restaurant.setPackList(packList);
 	    restaurant.setPayList(payList);

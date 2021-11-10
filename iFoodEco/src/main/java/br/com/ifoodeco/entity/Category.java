@@ -4,12 +4,6 @@ public class Category {
 	
 	private int id;
 	private String category;
-
-	public Category(String category, int id) {
-		super();
-		this.category = category;
-		this.id = id;
-	}
 	
 	public int getId() {
 		return id;
@@ -17,5 +11,13 @@ public class Category {
 		
 	public String getCategory() {
 		return category;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 }

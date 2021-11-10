@@ -11,8 +11,8 @@ public class Restaurant {
 	private String emailAddress;
 	private int agencyNumber;
 	private int accountNumber;
-	private String plan;
-	private String category;
+	private Plan plan;
+	private Category category;
 	private List<Pix> pixList;
 	private List<Packaging> packList;
 	private List<PayMethod> payList;
@@ -105,19 +105,19 @@ public class Restaurant {
 		this.payList = payList;
 	}
 
-	public String getPlan() {
+	public Plan getPlan() {
 		return plan;
 	}
 
-	public void setPlan(String plan) {
+	public void setPlan(Plan plan) {
 		this.plan = plan;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
 }

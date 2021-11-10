@@ -3,8 +3,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+
+import br.com.ifoodeco.entity.Category;
 import br.com.ifoodeco.entity.Packaging;
 import br.com.ifoodeco.entity.Pix;
+import br.com.ifoodeco.entity.Plan;
 import br.com.ifoodeco.entity.Restaurant;
 import br.com.ifoodeco.entity.PayMethod;
 
@@ -28,8 +31,14 @@ public class RestaurantDao {
 			ResultSet result = conn.getData(getRestaurant);
 			
 			if (result.next()) {
-			    restaurant.setPlan(result.getString(1));
-			    restaurant.setCategory(result.getString(2));
+				Plan plan = new Plan();
+		    	plan.setPlan(result.getString(1));
+		    	
+		    	Category category = new Category();
+		    	category.setCategory(result.getString(2));
+				
+			    restaurant.setPlan(plan);
+			    restaurant.setCategory(category);
 				restaurant.setName(result.getString(3));
 			    restaurant.setNumber(result.getLong(4));
 			    restaurant.setScheduledDelivery(result.getBoolean(5));
@@ -113,8 +122,8 @@ public class RestaurantDao {
 					+ "?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			restaurantInsert.setLong(1, restaurant.getCnpjNumber());
-			restaurantInsert.setInt(2, PlanDao.getPlanId(conn, restaurant.getPlan()));
-			restaurantInsert.setInt(3, CategoryDao.getCategoryId(conn, restaurant.getCategory()));
+			restaurantInsert.setInt(2, PlanDao.getPlanId(conn, restaurant.getPlan().getPlan()));
+			restaurantInsert.setInt(3, CategoryDao.getCategoryId(conn, restaurant.getCategory().getCategory()));
 			restaurantInsert.setString(4, restaurant.getName());
 			restaurantInsert.setLong(5, restaurant.getNumber());
 			restaurantInsert.setBoolean(6, restaurant.isScheduledDelivery());
@@ -173,8 +182,8 @@ public class RestaurantDao {
 					+ ", NR_TELEFONE = ?, ENT_AGENDADA = ?, EMAIL = ?, NR_AGENCIA = ?"
 					+ ", NR_CONTA = ? WHERE NR_CNPJ = ?");
 			
-			restaurantUpdate.setInt(1, PlanDao.getPlanId(conn, restaurant.getPlan()));
-			restaurantUpdate.setInt(2, CategoryDao.getCategoryId(conn, restaurant.getCategory()));
+			restaurantUpdate.setInt(1, restaurant.getPlan().getId());
+			restaurantUpdate.setInt(2, restaurant.getCategory().getId());
 			restaurantUpdate.setString(3, restaurant.getName());
 			restaurantUpdate.setLong(4, restaurant.getNumber());
 			restaurantUpdate.setBoolean(5, restaurant.isScheduledDelivery());

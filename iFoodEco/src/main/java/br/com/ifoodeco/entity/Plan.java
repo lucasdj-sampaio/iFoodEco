@@ -4,12 +4,6 @@ public class Plan {
 	
 	private int id;
 	private String plan;
-
-	public Plan(String plan, int id) {
-		super();
-		this.plan = plan;
-		this.id = id;
-	}
 	
 	public int getId() {
 		return id;
@@ -17,5 +11,13 @@ public class Plan {
 		
 	public String getPlan() {
 		return plan;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setPlan(String plan) {
+		this.plan = plan;
 	}
 }

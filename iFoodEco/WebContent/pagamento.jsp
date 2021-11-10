@@ -62,7 +62,7 @@
                         </div> 
                         <div>
                             <label>
-                                <input type="checkbox" name="pagamento" value="VVREST" style="margin: 10px 2px;">VALE - ALELO REFEIÇÃO / VISA VALE (CARTÃO)
+                                <input type="checkbox" name="pagamento" value="VALE - ALELO REFEIÇÃO / VISA VALE (CARTÃO)" style="margin: 10px 2px;">VALE - ALELO REFEIÇÃO / VISA VALE (CARTÃO)
                             </label>
                         </div> 	                    
                         <div>

@@ -21,7 +21,11 @@ public class PlanDao {
 			ResultSet result = conn.getData(getPlan);
 			
 			while (result.next()) {
-				planList.add(new Plan(result.getString(2), result.getInt(1)));
+				Plan plan = new Plan();
+		    	plan.setId(result.getInt(1));
+		    	plan.setPlan(result.getString(2));
+		    	
+				planList.add(plan);
 			}
 		}
 		catch (SQLException ex) 

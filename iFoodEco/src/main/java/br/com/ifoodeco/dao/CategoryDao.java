@@ -21,7 +21,11 @@ public class CategoryDao {
 			ResultSet result = conn.getData(getCat);
 			
 			while (result.next()) {
-				categoryList.add(new Category(result.getString(2), result.getInt(1)));
+				Category category = new Category();
+				category.setId(result.getInt(1));
+				category.setCategory(result.getString(2));
+				
+				categoryList.add(category);
 			}
 		}
 		catch (SQLException ex) 

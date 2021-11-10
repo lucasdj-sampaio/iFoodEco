@@ -68,7 +68,7 @@
                                     <input class="embalagemCheck" type="checkbox" name="embalagem" value=${emb.id} checked disabled>${emb.packagingName}
                                 </c:when>
                                 <c:otherwise>
-                                    <input class="embalagemCheck" type="checkbox" name="embalagem" value=${emb.id} disabled=true>${emb.packagingName}
+                                    <input class="embalagemCheck" type="checkbox" name="embalagem" value=${emb.id} disabled>${emb.packagingName}
                                 </c:otherwise>
                             </c:choose>
                         </label>
