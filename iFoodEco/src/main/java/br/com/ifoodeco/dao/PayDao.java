@@ -103,11 +103,11 @@ public class PayDao {
 			for (PayMethod payment : paymentList) {
 				
 				PreparedStatement payInsert = conn.getConnection().prepareStatement("INSERT INTO "
-						+ "T_PAG_RESTAURANTE VALUES (PAG.Nextval, ?, ?)");
+						+ "T_PAG_RESTAURANTE (CD_RELACAO, NR_CNPJ, CD_PAG) VALUES (PAG.Nextval, ?, ?)");
 				
-				payInsert.setString(1, payment.getPayMethod());
-				payInsert.setLong(2, cnpjNumber);
-
+				payInsert.setLong(1, cnpjNumber);
+				payInsert.setInt(2, getPayId(conn, payment.getPayMethod()));
+				
 				conn.executeCommand(payInsert, false);
 			}
 			
@@ -119,6 +119,29 @@ public class PayDao {
 			return false;
 		}
 	}
+	
+	public static int getPayId(ConnectionManager conn, String payName) {
+		try {
+			
+			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_pag "
+					+ "FROM T_FORMA_PAG WHERE descricao = ?");
+			
+			getId.setString(1, payName);
+						
+			ResultSet result = conn.getData(getId);
+			
+			if (result.next()) {
+				return result.getInt(1);
+			}
+			
+			return 0;
+		}
+		catch (SQLException ex) 
+		{
+			ex.printStackTrace();
+			return 0;
+		}
+	}  
 	
 	public static boolean updatePay(PayMethod pay) {
 		ConnectionManager conn = new ConnectionManager();

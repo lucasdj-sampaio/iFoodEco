@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:useBean id="restaurant" class="br.com.ifoodeco.entity.Restaurant" scope="request"/>
 
 <!doctype html>
     <html lang="pt-br">     
@@ -11,6 +12,35 @@
             window.onload = function() {
                 document.getElementById('perfilLink').style.color = "#ea1d2c";
                 document.getElementById('perfilIcon').scr = "Imagem/2-vermelho.png";
+            }
+        </script>
+
+        <script>
+            function habilitar() {
+                if (document.getElementById('select-plano').disabled == true) 
+                {
+                    document.getElementById('select-plano').disabled = false;
+                    document.getElementById('select-categoria').disabled = false;
+                    document.getElementById('nome-restaurante-selecao').disabled = false;
+                    document.getElementById('telefone-selecao').disabled = false;
+                    document.getElementById('email-selecao').disabled = false;
+                    document.getElementById('logradouro-selecao').disabled = false;
+                    document.getElementById('cep-selecao').disabled = false;
+                    document.getElementById('nr-logradouro-selecao').disabled = false;
+                    document.getElementById('complemento').disabled = false;
+                    document.getElementById('inputAtualizar').hidden = false;
+                }else{
+                    document.getElementById('select-plano').disabled = true;
+                    document.getElementById('select-categoria').disabled = true;
+                    document.getElementById('nome-restaurante-selecao').disabled = true;
+                    document.getElementById('telefone-selecao').disabled = true;
+                    document.getElementById('email-selecao').disabled = true;
+                    document.getElementById('logradouro-selecao').disabled = true;
+                    document.getElementById('cep-selecao').disabled = true;
+                    document.getElementById('nr-logradouro-selecao').disabled = true;
+                    document.getElementById('complemento').disabled = true;
+                    document.getElementById('inputAtualizar').hidden = true;
+                }
             }
         </script>
     </header>
@@ -120,35 +150,6 @@
                 
                 <input type="submit" id="inputAtualizar" value="Atualizar Registros" class="enviar" hidden=true> 
             </form>
-
-            <script>
-                function habilitar() {
-                    if (document.getElementById('select-plano').disabled == true) 
-                    {
-                        document.getElementById('select-plano').disabled = false;
-                        document.getElementById('select-categoria').disabled = false;
-                        document.getElementById('nome-restaurante-selecao').disabled = false;
-                        document.getElementById('telefone-selecao').disabled = false;
-                        document.getElementById('email-selecao').disabled = false;
-                		document.getElementById('logradouro-selecao').disabled = false;
-                        document.getElementById('cep-selecao').disabled = false;
-                        document.getElementById('nr-logradouro-selecao').disabled = false;
-                        document.getElementById('complemento').disabled = false;
-                        document.getElementById('inputAtualizar').hidden = false;
-                    }else{
-                        document.getElementById('select-plano').disabled = true;
-                        document.getElementById('select-categoria').disabled = true;
-                        document.getElementById('nome-restaurante-selecao').disabled = true;
-                        document.getElementById('telefone-selecao').disabled = true;
-                        document.getElementById('email-selecao').disabled = true;
-                        document.getElementById('logradouro-selecao').disabled = true;
-                        document.getElementById('cep-selecao').disabled = true;
-                        document.getElementById('nr-logradouro-selecao').disabled = true;
-                        document.getElementById('complemento').disabled = true;
-                        document.getElementById('inputAtualizar').hidden = true;
-                    }
-                }
-            </script>
         </main>
     </body>
 </html>

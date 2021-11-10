@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<jsp:useBean id="restaurant" class="br.com.ifoodeco.entity.Restaurant" scope="request"/>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="br.com.ifoodeco.entity.Restaurant"%>
 <%@page import="br.com.ifoodeco.entity.Packaging"%>
@@ -17,9 +18,30 @@
                 document.getElementById('embIcon').scr = "Imagem/12-vermelho.png";
             }
         </script>
+
+        <script>
+            function habilitar() {
+                var elements = document.getElementsByClassName('embalagemCheck');
+
+                if (elements[0].disabled == true) {
+                    document.getElementById('inputAtualizar').hidden = false;
+
+                    for (var i = 0; i < elements.length; i++) {
+                        elements[i].disabled = false;
+                    }​                       
+                }else{
+                    document.getElementById('inputAtualizar').hidden = true;
+
+                    for (var i = 0; i < elements.length; i++) {
+                        elements[i].disabled = true;
+                    }                        
+                }
+            }
+        </script>
     </header>
 
     <body>
+
         <%@ include file="menu.jsp" %>
 
         <div class="dados_cadastrados">
@@ -42,39 +64,19 @@
                     <div>                   		
                         <label>
                             <c:choose>
-                                <c:when test = "${exist} == on">
-                                    <input type="checkbox" name="embalagem" value="${emb.id}" checked disabled>${emb.packagingName}
+                                <c:when test = "${exist == 'on'}">
+                                    <input class="embalagemCheck" type="checkbox" name="embalagem" value=${emb.id} checked disabled>${emb.packagingName}
                                 </c:when>
+                                <c:otherwise>
+                                    <input class="embalagemCheck" type="checkbox" name="embalagem" value=${emb.id} disabled=true>${emb.packagingName}
+                                </c:otherwise>
                             </c:choose>
-                            <c:otherwise>
-                                <input type="checkbox" name="embalagem" value="${emb.id}" disabled>${emb.packagingName}
-                            </c:otherwise>
                         </label>
                     </div>
                 </c:forEach> 
 
                 <input type="submit" id="inputAtualizar" value="Atualizar Registros" class="enviar" hidden=true> 
             </form>
-
-            <script>
-                function habilitar() {
-                    var elements = document.getElementsByTagName('input');
-
-                    if (document.getElementById('inputAtualizar').hidden == true) {
-                        for (var i = 0; i < elements.length; i++) {
-                            elements[i].disabled == false;
-                        }​
-
-                        document.getElementById('inputAtualizar').hidden = false;
-                    }else{
-                        for (var i = 0; i < elements.length; i++) {
-                            elements[i].disabled == true;
-                        }
-
-                        document.getElementById('inputAtualizar').hidden = true;
-                    }
-                }
-            </script>
         </main>
     </body>
 </html>

@@ -27,42 +27,42 @@
 					    
                         <div>                   		
                             <label>
-                                <input type="checkbox" name="pagamento" value="IFOOD_ONLINE" style="margin: 10px 2px;">Ifood Online
+                                <input type="checkbox" name="pagamento" value="iFood Online" style="margin: 10px 2px;">iFood Online
                             </label>
                         </div>  
                         <div>           
                             <label>
-                                <input type="checkbox" name="pagamento" value="AM"  style="margin: 10px 2px;">AMEX
+                                <input type="checkbox" name="pagamento" value="AMEX"  style="margin: 10px 2px;">AMEX
                             </label>   
                         </div> 
                         <div> 
                             <label>
-                                <input type="checkbox" name="pagamento" value="MC" style="margin: 10px 2px;">Mastercard
+                                <input type="checkbox" name="pagamento" value="DINHEIRO" style="margin: 10px 2px;">DINHEIRO
                             </label>
                         </div>
                         <div>
                             <label>
-                                <input type="checkbox" name="pagamento" value="ELO" style="margin: 10px 2px;">Elo
+                                <input type="checkbox" name="pagamento" value="ELO" style="margin: 10px 2px;">ELO
                             </label>
                         </div>
                         <div>
                             <label>
-                                <input type="checkbox" name="pagamento" value="DIN" style="margin: 10px 2px;">Dinheiro
+                                <input type="checkbox" name="pagamento" value="MASTERCARD" style="margin: 10px 2px;">MASTERCARD
                             </label>
                         </div>
                         <div>
                             <label>
-                                <input type="checkbox" name="pagamento" value="VIS" style="margin: 10px 2px;">Visa
+                                <input type="checkbox" name="pagamento" value="Paypal" style="margin: 10px 2px;">Paypal
                             </label>
                         </div>	                    
                         <div>              	
                             <label>
-                                <input type="checkbox" name="pagamento" value="PAY" style="margin: 10px 2px;">PayPal
+                                <input type="checkbox" name="pagamento" value="VISA" style="margin: 10px 2px;">VISA
                             </label>
                         </div> 
                         <div>
                             <label>
-                                <input type="checkbox" name="pagamento" value="VVREST" style="margin: 10px 2px;">Vale alelo
+                                <input type="checkbox" name="pagamento" value="VVREST" style="margin: 10px 2px;">VALE - ALELO REFEIÇÃO / VISA VALE (CARTÃO)
                             </label>
                         </div> 	                    
                         <div>
