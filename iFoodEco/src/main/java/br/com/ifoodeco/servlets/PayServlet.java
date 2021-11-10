@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import br.com.ifoodeco.entity.PayMethod;
 import br.com.ifoodeco.entity.Pix;
 import br.com.ifoodeco.entity.Restaurant;
+import br.com.ifoodeco.entity.PayMethod;
 import br.com.ifoodeco.util.Util;
 
 @WebServlet(description = "This servlet get payment data from webPage", urlPatterns = { "/fourthStep" })

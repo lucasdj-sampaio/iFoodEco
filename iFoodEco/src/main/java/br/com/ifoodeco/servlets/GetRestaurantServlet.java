@@ -6,6 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import br.com.ifoodeco.dao.PackagingDao;
 import br.com.ifoodeco.dao.RestaurantDao;
 import br.com.ifoodeco.entity.Restaurant;
 
@@ -34,6 +36,7 @@ public class GetRestaurantServlet extends HttpServlet {
 				break;
 			case 2:
 				jspFile = "retorno_cadastro_embalagem.jsp";
+				request.setAttribute("embList", PackagingDao.getAll());
 				break;
 			case 3:
 				jspFile = "retorno_cadastro_pagamento.jsp";

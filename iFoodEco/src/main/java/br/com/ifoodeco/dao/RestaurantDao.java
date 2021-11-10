@@ -3,11 +3,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-
 import br.com.ifoodeco.entity.Packaging;
-import br.com.ifoodeco.entity.PayMethod;
 import br.com.ifoodeco.entity.Pix;
 import br.com.ifoodeco.entity.Restaurant;
+import br.com.ifoodeco.entity.PayMethod;
 
 public class RestaurantDao {
 	
@@ -114,8 +113,8 @@ public class RestaurantDao {
 					+ "?, ?, ?, ?, ?, ?, ?, ?)");
 			
 			restaurantInsert.setLong(1, restaurant.getCnpjNumber());
-			restaurantInsert.setInt(2, getPlanId(conn, restaurant.getPlan()));
-			restaurantInsert.setInt(3, getCategoryId(conn, restaurant.getCategory()));
+			restaurantInsert.setInt(2, PlanDao.getPlanId(conn, restaurant.getPlan()));
+			restaurantInsert.setInt(3, CategoryDao.getCategoryId(conn, restaurant.getCategory()));
 			restaurantInsert.setString(4, restaurant.getName());
 			restaurantInsert.setLong(5, restaurant.getNumber());
 			restaurantInsert.setBoolean(6, restaurant.isScheduledDelivery());
@@ -135,52 +134,6 @@ public class RestaurantDao {
 			ex.printStackTrace();
 			return false;
 		}	
-	}
-	
-	private static int getPlanId(ConnectionManager conn, String planName) {
-		try {
-			
-			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_plano "
-					+ "FROM T_PLANO WHERE nm_plano = ?");
-			
-			getId.setString(1, planName);
-						
-			ResultSet result = conn.getData(getId);
-			
-			if (result.next()) {
-				return result.getInt(1);
-			}
-			
-			return 0;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return 0;
-		}
-	}
-	
-	private static int getCategoryId(ConnectionManager conn, String categoryName) {
-		try {
-			
-			PreparedStatement getId = conn.getConnection().prepareStatement("SELECT cd_categoria "
-					+ "FROM T_CATEGORIA WHERE nm_categoria = ?");
-			
-			getId.setString(1, categoryName);
-						
-			ResultSet result = conn.getData(getId);
-			
-			if (result.next()) {
-				return result.getInt(1);
-			}
-			
-			return 0;
-		}
-		catch (SQLException ex) 
-		{
-			ex.printStackTrace();
-			return 0;
-		}
 	}
 	
 	public static boolean updateRestaurantDao(Restaurant restaurant) {
@@ -220,8 +173,8 @@ public class RestaurantDao {
 					+ ", NR_TELEFONE = ?, ENT_AGENDADA = ?, EMAIL = ?, NR_AGENCIA = ?"
 					+ ", NR_CONTA = ? WHERE NR_CNPJ = ?");
 			
-			restaurantUpdate.setInt(1, getPlanId(conn, restaurant.getPlan()));
-			restaurantUpdate.setInt(2, getCategoryId(conn, restaurant.getCategory()));
+			restaurantUpdate.setInt(1, PlanDao.getPlanId(conn, restaurant.getPlan()));
+			restaurantUpdate.setInt(2, CategoryDao.getCategoryId(conn, restaurant.getCategory()));
 			restaurantUpdate.setString(3, restaurant.getName());
 			restaurantUpdate.setLong(4, restaurant.getNumber());
 			restaurantUpdate.setBoolean(5, restaurant.isScheduledDelivery());

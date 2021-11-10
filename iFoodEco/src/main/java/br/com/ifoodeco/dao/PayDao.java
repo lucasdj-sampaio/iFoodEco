@@ -74,13 +74,16 @@ public class PayDao {
 		List<PayMethod> payList = new ArrayList<PayMethod>();
 		
 		try {
-			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT descricao "
+			PreparedStatement getPayment = conn.getConnection().prepareStatement("SELECT CD_PAG, DESCRICAO "
 					+ "FROM T_FORMA_PAG");
 						
 			ResultSet result = conn.getData(getPayment);
 			
 			while (result.next()) {
-				payList.add(new PayMethod(result.getString(1)));
+				PayMethod pay = new PayMethod(result.getString(1));
+				pay.setId(result.getInt(2));
+				
+				payList.add(pay);
 			}
 		}
 		catch (SQLException ex) 

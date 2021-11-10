@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<jsp:useBean id="restaurant" class="br.com.ifoodeco.entity.Restaurant" scope="request"/>
-<jsp:useBean id="" class="" scope="request"/>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="br.com.ifoodeco.entity.Restaurant"%>
+<%@page import="br.com.ifoodeco.entity.Packaging"%>
+<%@page import="java.util.List"%>
+
 <!doctype html>
 <html lang="pt-br">     
     <head>
@@ -25,71 +28,49 @@
         </div>
 
         <main class="main_formato_recadastro">
-            <div>
-                <label>
-                    <input type="checkbox" name="pagamento1"style="margin: 10px 2px;">Embalagem de vidro
-                </label>  
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="pagamento2" style="margin: 10px 2px;">Embalagem de aluminio
-                </label> 
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="pagamento3"style="margin: 10px 2px;">Embalagem de isopor
-                </label> 
-            </div>
-            <div>                        
-                <label>
-                    <input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Embalagem de plástico
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Embalagem de papel
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Talher de plástico
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="pagamento4"style="margin: 10px 2px;">Canudo de plástico
-                </label>
-            </div>
-            <div>
-                <label>
-                    <input type="checkbox" name="pagamento5"style="margin: 10px 2px;">Outros
-                </label>
-            </div>
+            <form action="updateProfile" method="post">   
+
+                <c:forEach var="emb" items="${embList}">
+                    <c:set var="exist" value="off"/>
+
+                    <c:forEach var="restEmb" items="${restaurant.packList}">
+                        <c:if test = "${emb.packagingName == restEmb.packagingName}">
+                            <c:set var="exist" value="on"/>
+                        </c:if>     
+                    </c:forEach>
+                    
+                    <div>                   		
+                        <label>
+                            <c:choose>
+                                <c:when test = "${exist} == on">
+                                    <input type="checkbox" name="embalagem" value="${emb.id}" checked disabled>${emb.packagingName}
+                                </c:when>
+                            </c:choose>
+                            <c:otherwise>
+                                <input type="checkbox" name="embalagem" value="${emb.id}" disabled>${emb.packagingName}
+                            </c:otherwise>
+                        </label>
+                    </div>
+                </c:forEach> 
+
+                <input type="submit" id="inputAtualizar" value="Atualizar Registros" class="enviar" hidden=true> 
+            </form>
 
             <script>
                 function habilitar() {
-                    if (document.getElementById('select-plano').disabled == true) 
-                    {
-                        document.getElementById('select-plano').disabled = false;
-                        document.getElementById('select-categoria').disabled = false;
-                        document.getElementById('nome-restaurante-selecao').disabled = false;
-                        document.getElementById('telefone-selecao').disabled = false;
-                        document.getElementById('email-selecao').disabled = false;
-                		document.getElementById('logradouro-selecao').disabled = false;
-                        document.getElementById('cep-selecao').disabled = false;
-                        document.getElementById('nr-logradouro-selecao').disabled = false;
-                        document.getElementById('complemento').disabled = false;
+                    var elements = document.getElementsByTagName('input');
+
+                    if (document.getElementById('inputAtualizar').hidden == true) {
+                        for (var i = 0; i < elements.length; i++) {
+                            elements[i].disabled == false;
+                        }​
+
                         document.getElementById('inputAtualizar').hidden = false;
                     }else{
-                        document.getElementById('select-plano').disabled = true;
-                        document.getElementById('select-categoria').disabled = true;
-                        document.getElementById('nome-restaurante-selecao').disabled = true;
-                        document.getElementById('telefone-selecao').disabled = true;
-                        document.getElementById('email-selecao').disabled = true;
-                        document.getElementById('logradouro-selecao').disabled = true;
-                        document.getElementById('cep-selecao').disabled = true;
-                        document.getElementById('nr-logradouro-selecao').disabled = true;
-                        document.getElementById('complemento').disabled = true;
+                        for (var i = 0; i < elements.length; i++) {
+                            elements[i].disabled == true;
+                        }
+
                         document.getElementById('inputAtualizar').hidden = true;
                     }
                 }

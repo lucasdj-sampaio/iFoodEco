@@ -75,13 +75,16 @@ public class PackagingDao {
 		List<Packaging> packList = new ArrayList<Packaging>();
 		
 		try {
-			PreparedStatement getPack = conn.getConnection().prepareStatement("SELECT nm_emb "
+			PreparedStatement getPack = conn.getConnection().prepareStatement("SELECT cd_emb, nm_emb "
 					+ "FROM T_EMBALAGEM");
 								
 			ResultSet result = conn.getData(getPack);
 			
 			while (result.next()) {
-				packList.add(new Packaging(result.getString(1)));
+				Packaging pack = new Packaging(result.getString(2));
+				pack.setId(result.getInt(1));
+				
+				packList.add(pack);
 			}
 		}
 		catch (SQLException ex) 
